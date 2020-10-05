@@ -1,0 +1,59 @@
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+// Make sure to keep in mind the order of different media queries. They don't add specifity to our classes at all.
+// So if there are 2 conflicting media queries, for 2 different widths, then the one that comes latter, is applied.
+html {
+  // This defines what 1rem is (1rem = 10px, 10/16 = 62.5%)
+  font-size: 62.5%;
+
+  @include respond(tab-land) {
+    font-size: 56.25%; // 1rem = 9px, 9/16 = 56.25%
+  }
+
+  @include respond(tab-port) {
+    font-size: 50%; // 1rem = 8px, 8/16 = 50%
+  }
+
+  @include respond(phone) {
+    font-size: 37.5%; // 1rem = 6px, 6/16 = 37.5%
+  }
+
+  @include respond(big-desktop) {
+    font-size: 75%; // 1rem = 12px, 12/16 = 75% 
+  }
+}
+
+body {
+    box-sizing: border-box;
+    background: #222;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #000000, 70%, #222);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(45deg ,#000000, 70% ,#222); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+h1,h2,h3,h4,h5{
+    font-family: $fp;
+    color: $cp;
+}
+
+h1{
+    font-size: 50px;
+    font-weight: 300;
+}
+
+p{
+    font-family: $fs;
+    font-size: 14px;
+    font-weight: 400;
+    color: white;
+}
+
+// ::selection {
+//   background-color: $color-primary;
+//   color: $color-white;
+// }
