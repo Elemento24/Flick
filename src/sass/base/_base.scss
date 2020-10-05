@@ -36,6 +36,11 @@ body {
     background: linear-gradient(45deg ,#000000, 70% ,#222); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
+body{
+    color: white;
+    font-size: 18px;
+}
+
 h1,h2,h3,h4,h5{
     font-family: $fp;
     color: $cp;
@@ -52,8 +57,3 @@ p{
     font-weight: 400;
     color: white;
 }
-
-// ::selection {
-//   background-color: $color-primary;
-//   color: $color-white;
-// }
