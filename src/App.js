@@ -13,13 +13,18 @@ const asyncTrending = asyncComponent(() => {
     return import('./components/Trending/Trending');
 });
 
+const asyncShow = asyncComponent(() => {
+    return import('./components/Show/Show');
+});
+
 const App = () => {
     
     let routes = (
         <Switch>
             <Route path='/trending' exact component={asyncTrending} />
 			<Route path='/search' exact component={asyncSearch} />
-			<Route path='/' exact render={() => <Landing /> } />
+ 			<Route path='/movie/:id' exact component={asyncShow} />
+			<Route path='/' exact component = { Landing }/>
 			<Redirect to='/' />
 		</Switch>
     );
