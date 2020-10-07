@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Merienda:wght@400;700&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Tangerine&display=swap');
 
 // COLORS
 $cp: #F9690E;
@@ -16,5 +17,24 @@ $cw: #fff;
 $cb:#000000;
 
 // FONTS 
-$fs: 'Merienda', cursive;
-$fp: 'Ubuntu', sans-serif;
+$fp: 'Ubuntu', sans-serif;     // For Headings     
+$fs: 'Merienda', cursive;      // For Text
+$ft: 'Tangerine', cursive;     // Brand
+
+
+// BOX SHADOWS
+$bs-sm-l: 0 .5rem .8rem rgba($cb, 0.3);
+$bs-sm-m: 0 .5rem .8rem rgba($cb, 0.5);
+$bs-sm-d: 0 .5rem .8rem rgba($cb, 0.8);
+
+$bs-md-l: 0 1rem 1.8rem rgba($cb, 0.3);
+$bs-md-m: 0 1rem 1.8rem rgba($cb, 0.5);
+$bs-md-d: 0 1rem 1.8rem rgba($cb, 0.8);
+
+$bs-lg-l: 0 2rem 3rem rgba($cb, 0.3);
+$bs-lg-m: 0 2rem 3rem rgba($cb, 0.5);
+$bs-lg-d: 0 2rem 3rem rgba($cb, 0.8);
+
+$bs-xl-l: 0 3rem 4.2rem rgba($cb, 0.3);
+$bs-xl-m: 0 3rem 4.2rem rgba($cb, 0.5);
+$bs-xl-d: 0 3rem 4.2rem rgba($cb, 0.8);

@@ -7,7 +7,7 @@ import Footer from '../components/Footer/Footer';
 
 const Layout = props => {
 	return(
-		<div style = {{color: "#fff"}}>
+		<div className='layout'>
 			{/*Navbar for logo Logo Only*/}
 			<Navbar />
             

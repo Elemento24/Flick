@@ -1,0 +1,85 @@
+.nav {
+    display: flex;
+    align-items: center;
+    padding: 0 3rem;
+    justify-content: space-between;
+    height: 9rem;
+    
+    box-shadow: $bs-md-d;
+    
+    &__logo-box {
+        height: 5.5rem;
+        width: 5.5rem;
+    }
+    
+    &__logo{
+        width: 100%;
+        height: 100%;
+        object-fit: fill;
+    }
+    
+    &__brand-box {
+        
+    }
+    
+    &__brand {
+        color: $cp;
+        font-size: 6rem;
+        font-weight: 400;
+        font-family: $ft;
+        letter-spacing: 7px;
+        margin-top: 7px;
+    }
+    
+    &__ham{
+        cursor: pointer;
+        width: 5.5rem;
+        height: 5.5rem;
+        border: 2px solid $cp-d;
+        border-radius: 50%;
+        position: relative;
+        background-color: $cp-d;
+        
+        &::after{
+            content: '';
+            position: absolute;
+            top: -5%;
+            left: -5%;
+            height: 110%;
+            width: 110%;
+            border-radius: 50%;
+            border: 2px solid $cp;
+            animation: hamburger_pulse 1s infinite;
+        }
+        
+        &-icon{
+            @include absCenter;
+            
+            display: block;
+            height: 2.5px;
+            width: 30px;
+            background-color: $cb;
+            position: relative;
+            
+            &::before{
+                content: "";
+                background-color: $cb;
+                height: 100%;
+                width: 100%;
+                position: absolute;
+                bottom: 8px;
+                left: 0;
+            }
+            
+            &::after{
+                content: '';
+                background-color: $cb;
+                height: 100%;
+                width: 100%;
+                position: absolute;
+                top: 8px;
+                left: 0;
+            }
+        }
+    }
+}

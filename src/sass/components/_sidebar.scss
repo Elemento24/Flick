@@ -1,0 +1,39 @@
+.sidebar {
+    height: calc(100vh - 9rem);
+    overflow: hidden;
+    position: absolute;
+    top: 9rem;
+    right: 0;
+    width: 35rem;
+    // background-color: $cp;
+    background: linear-gradient(-15deg, $cb 1.5%, $cp, $cb 98.5%);
+    
+    &__menu{
+        height: 100%;
+        
+        &-list {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            height: 100%;
+        }
+        
+        &-item {
+            width: 120%;
+            padding: 1rem 2rem;
+            margin: 2rem 0;
+            background-color: $cb;
+            transform: rotate(-15deg) translateX(-10%);
+            text-align: center;
+            transition: all .5s;
+            overflow: hidden;
+        }
+
+        &-link{
+            text-decoration: none;
+            color: $cp;
+            font-size: 5rem;
+            position: relative;
+        }
+    }
+}

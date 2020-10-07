@@ -1,15 +1,20 @@
 import React from 'react';
 
+import Logo from '../../assets/logo.png';
+
 const Navbar = function(){
     return(
-        <React.Fragment>
-            <figure>
-                <p>THERE WILL BE A LOGO HERE</p>
+        <div className='nav'>
+            <figure className='nav__logo-box'>
+                <img className='nav__logo' src={Logo} alt="Logo" />
             </figure>
-            <figcaption>
-                <p>THERE WILL BE THE NAME OF THE COMPANY</p>
+            <figcaption className = "nav__brand-box">
+                <h1 className='nav__brand pl-2'>Flick</h1>
             </figcaption>
-        </React.Fragment>
+            <div className = 'nav__ham'>
+                <span className='nav__ham-icon'></span>
+            </div>
+        </div>
     );
 };
 

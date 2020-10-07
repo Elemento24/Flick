@@ -4,9 +4,8 @@ import NavigationItems from './NavigationItems/NavigationItems';
 
 const Sidebar = props => {
     return(
-        <div>
-            <p>This is the Sidebar</p>
-            <nav>
+        <div className = "sidebar">
+            <nav className = "sidebar__menu">
                 <NavigationItems />
             </nav>
         </div>  
