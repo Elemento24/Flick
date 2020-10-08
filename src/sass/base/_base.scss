@@ -29,10 +29,21 @@ html {
     }
 }
 
+ /* Hide scrollbar for Chrome, Safari and Opera */
+html::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+html {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+} 
+
 body {
     // testing
     min-height: 100vh;
-    
+
     box-sizing: border-box;
     background: #222;  /* fallback for old browsers */
     background: -webkit-linear-gradient(to right, #000000, 70%, #222);  /* Chrome 10-25, Safari 5.1-6 */

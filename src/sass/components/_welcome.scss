@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Rouge+Script&display=swap');
+
+.welcome{
+    min-height: calc(100vh - 9rem);
+    position: relative;
+    
+    &__watermark {
+        @include absCenter;
+        
+        font-size: 80rem;
+        opacity: 1;
+        color: $cb;
+        opacity: 1;
+        text-shadow: 0 .5rem .5rem rgba($cp, 0.4);
+        font-weight: 300;
+        font-family: 'Rouge Script';
+    }
+    
+}
