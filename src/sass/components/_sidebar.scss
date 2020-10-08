@@ -5,8 +5,18 @@
     top: 9rem;
     right: 0;
     width: 35rem;
-    // background-color: $cp;
     background: linear-gradient(-15deg, $cb 1.5%, $cp, $cb 98.5%);
+    transition: all .5s ease-in-out;
+    
+    box-shadow: -1rem 0 1rem rgba($cb, 0.4), -1rem 0 1rem rgba($cb, 0.4);
+    
+    &__on{
+        right: 0;
+    }
+    
+    &__off{
+        right: -36rem;
+    }
     
     &__menu{
         height: 100%;
@@ -34,6 +44,10 @@
             color: $cp;
             font-size: 5rem;
             position: relative;
+            
+            @include respond(tab-land) {
+                font-size: 4rem;
+            }
         }
     }
 }

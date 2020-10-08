@@ -20,11 +20,11 @@ With the help of 'content' Directive, we can pass in an entire block of code, in
 We can write individual mixins for all the Breakpoints, or we can write 1 large mixin for all our Breakpoints.
 rems do not work in some browsers as intended. There are some experiments that have been conducted, and it is
 concluded that ems is the best choice for Media Queries. The conversion is '1em = 16px', and so we are 
-converting 600px, 900px, 1200px and 1800px into ems.
+converting 600px, 900px, 1400px and 1800px into ems.
 0 - 600px:          Phone
 600 - 900px:        Tablet Portrait
-900 - 1200px:       Tablet Landscape
-[1200 - 1800px]:    Normal CSS Styles
+900 - 1400px:       Tablet Landscape
+[4200 - 1800px]:    Normal CSS Styles
 1800px + :          Big Desktop
 $breakpoint Argument Choices
 - phone
@@ -56,7 +56,7 @@ ORDER: Base + Typography > General Layout + Grid > Page Layout > Components
   }
 
   @if $breakpoint==tab-land {
-    @media only screen and (max-width: 75em) {
+    @media only screen and (max-width: 87.5em) {
       @content
     }
   }

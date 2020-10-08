@@ -10,23 +10,23 @@
 // So if there are 2 conflicting media queries, for 2 different widths, then the one that comes latter, is applied.
 html {
   // This defines what 1rem is (1rem = 10px, 10/16 = 62.5%)
-  font-size: 62.5%;
+    font-size: 62.5%;
 
-  @include respond(tab-land) {
+    @include respond(tab-land) {
     font-size: 56.25%; // 1rem = 9px, 9/16 = 56.25%
-  }
-
-  @include respond(tab-port) {
+    }
+    
+    @include respond(tab-port) {
     font-size: 50%; // 1rem = 8px, 8/16 = 50%
-  }
-
-  @include respond(phone) {
+    }
+    
+    @include respond(phone) {
     font-size: 37.5%; // 1rem = 6px, 6/16 = 37.5%
-  }
-
-  @include respond(big-desktop) {
+    }
+    
+    @include respond(big-desktop) {
     font-size: 75%; // 1rem = 12px, 12/16 = 75% 
-  }
+    }
 }
 
 body {
