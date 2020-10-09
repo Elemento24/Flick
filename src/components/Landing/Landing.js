@@ -5,7 +5,7 @@ import Latest from './Latest/Latest';
 
 const Landing = () => {
     return (
-        <div class='landing'>
+        <div className='landing'>
             <Welcome />
             <Latest />
         </div>    

@@ -1,19 +1,74 @@
 @import url('https://fonts.googleapis.com/css2?family=Rouge+Script&display=swap');
 
-.welcome{
+.welcome {
     min-height: calc(100vh - 9rem);
     position: relative;
-    
-    &__watermark {
+
+    &__container {
         @include absCenter;
-        
-        font-size: 80rem;
-        opacity: 1;
-        color: $cb;
-        opacity: 1;
-        text-shadow: 0 .5rem .5rem rgba($cp, 0.4);
-        font-weight: 300;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    &__watermark {
+        font-size: 8rem;
         font-family: 'Rouge Script';
+        font-weight: 300;
+        position: relative;
+        text-align: center;
+        opacity: 1;
+        color: transparent;
+        animation: text_reveal .5s ease forwards;
+        
+        // Styling the H1
+        &:nth-child(1){
+            animation-delay: 1s;
+        }
+        &:nth-child(2){
+            animation-delay: 2s;
+        }
+        &:nth-child(3){
+            animation-delay: 3s;
+        }
+        
+        // Styling the Span
+        &:nth-child(1) .welcome__span{
+            animation-delay: .3s;
+        }
+        &:nth-child(2) .welcome__span{
+            animation-delay: 1.5s;
+        }
+        &:nth-child(3) .welcome__span{
+            animation-delay: 2.5s;
+        }
     }
     
+    &__span{
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 0%;
+        background-color: $cp-d;
+        animation: text_reveal_box 1s ease;
+    }
+}
+
+@keyframes text_reveal_box {
+    50% {
+        width: 100%;
+        left: 0;
+    }
+
+    100% {
+        width: 0;
+        left: 100%;
+    }
+}
+
+@keyframes text_reveal {
+    60%, 100%{
+        color: $cp-d;
+    }
 }
