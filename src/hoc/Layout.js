@@ -1,17 +1,23 @@
-import React, {Fragment, useState} from 'react';
-// import {connect} from 'react-redux';
+import React, {useEffect, useState} from 'react';
+import {connect} from 'react-redux';
 
+import * as actions from '../store/actions/action';
 import Navbar from '../components/Navbar/Navbar';
 import Sidebar from '../components/Sidebar/Sidebar';
 import Footer from '../components/Footer/Footer';
 
 const Layout = props => {
     
+    const {onGetGenres} = props;
     const [ isSideOpen, setToggleSidebar ] = useState(false);
     
     const toggleSidebar = () => {
         setToggleSidebar(!isSideOpen);
     }
+    
+    useEffect(() => {
+        onGetGenres();
+    }, [onGetGenres]);
     
 	return(
 		<div className='layout'>
@@ -30,4 +36,10 @@ const Layout = props => {
 	);
 };
 
-export default Layout;
+const mapDispatchToProps = dispatch => {
+    return {
+        onGetGenres: () => dispatch(actions.getGenres())
+    };
+};
+
+export default connect(null, mapDispatchToProps)(Layout);

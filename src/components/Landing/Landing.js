@@ -1,13 +1,13 @@
 import React from 'react';
 
 import Welcome from './Welcome/Welcome';
-import Latest from './Latest/Latest';
+import Popular from './Popular/Popular';
 
 const Landing = () => {
     return (
         <div className='landing'>
             <Welcome />
-            <Latest />
+            <Popular />
         </div>    
     );
 };

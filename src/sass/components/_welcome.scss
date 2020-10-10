@@ -3,9 +3,12 @@
 .welcome {
     min-height: calc(100vh - 9rem);
     position: relative;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
     &__container {
-        @include absCenter;
         display: flex;
         flex-direction: column;
         align-items: center;
