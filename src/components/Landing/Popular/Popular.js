@@ -1,11 +1,13 @@
 import React, { useEffect } from 'react';
 import { connect} from 'react-redux';
+import AOS from 'aos';
+import 'aos/dist/aos.css'; // You can also use <link> for styles
 
 import * as actions from '../../../store/actions/action';
 
 const Latest = props => {
+    AOS.init();
     const {onGetPopular, genres, movie} = props;
-    const list_gen = [];
     
     useEffect(() => {
         onGetPopular();
@@ -21,6 +23,7 @@ const Latest = props => {
     // img
     
     let movieDiv = null;
+    const list_gen = [];
     if(!props.loading && !props.error){
         
         // Populate the Genres of the Movie
@@ -32,11 +35,26 @@ const Latest = props => {
                 }
             }
         });
+        const movie_genres = list_gen.join(', ');
         
         // Generate the JSX Element for the Movie
-        movieDiv = <h1>{props.movie.original_title}</h1>;
+        movieDiv = (
+            <div className='popular__container'>
+                <div className='popular__container--left'>
+                    <div class='popular__vote'>
+                        <div class="popular__vote--avg">{movie.vote_average}</div>
+                    </div>
+                    <img className = "popular__poster" src={movie.img} alt={movie.title} />
+                    <h1 className="popular__title">{movie.title}</h1>
+                </div>
+                <div className="popular__container--right">
+                    <p class="popular__overview">{movie.overview}</p>
+                    <div className = "popular__date" >{movie.release_date}</div>
+                    <div className = "popular__genre" >{movie_genres}</div>
+                </div>
+            </div>    
+        );
     }
-    
     
     return (
       <div className='popular'>

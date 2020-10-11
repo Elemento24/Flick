@@ -1,3 +1,81 @@
-.latest{
+.popular{
+    min-height: 100vh;
+    width: 100%;
     color: $cw;
+    
+    &__container {
+        width: 70%;
+        margin: 6rem auto;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(50rem, 1fr));
+        column-gap: 6rem;
+        
+        &--left{
+            position: relative;
+        }
+        
+        &--right{
+            
+        }
+        
+    }
+    
+    
+    &__vote {
+        background: linear-gradient($cp-l, $cp-d);
+        height: 120px;
+        width: 120px;
+        clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+        color: $cb;
+        
+        position: absolute;
+        top: -5rem;
+        right: 2rem;
+        
+        @include respond(tab-land){
+            right: 0;
+            top: -6rem;
+        }
+        
+        &--avg {
+            @include absCenter;
+            font-size: 2.5rem;
+        }
+    }
+    
+    &__poster {
+        width: 80%;
+        margin: 0 10%;
+    }
+    
+    &__title {
+        position: relative;
+        width: 70%;
+        margin: 0 auto;
+        padding: 1.5rem;
+        margin-top: -4rem;
+        
+        text-align: center;
+        font-family: $fp;
+        font-size: 3rem;
+        font-weight: 400;
+        color: $cb;
+        
+        background: linear-gradient($cp-l, $cp-d);
+        clip-path: polygon(10% 0%, 100% 0%, 90% 100%, 0% 100%);
+        transition: .5s all;
+    }
+    
+    
+    &__overview {
+        
+    }
+    
+    &__date {
+        
+    }
+    
+    &__genre {
+        
+    }
 }
