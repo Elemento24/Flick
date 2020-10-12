@@ -49,8 +49,8 @@ const Latest = props => {
                 </div>
                 <div className="popular__container--right">
                     <p class="popular__overview">{movie.overview}</p>
-                    <div className = "popular__date" >{movie.release_date}</div>
-                    <div className = "popular__genre" >{movie_genres}</div>
+                    <div className = "popular__date"><i class="far fa-calendar-alt"></i><span class='ml-2'>{movie.release_date}</span></div>
+                    <div className = "popular__genre" ><i class="fas fa-stream"></i><span class="ml-2">{movie_genres}</span></div>
                 </div>
             </div>    
         );

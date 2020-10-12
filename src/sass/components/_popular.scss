@@ -2,6 +2,7 @@
     min-height: 100vh;
     width: 100%;
     color: $cw;
+    font-size: 2rem;
     
     &__container {
         width: 70%;
@@ -15,14 +16,17 @@
         }
         
         &--right{
-            
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
         }
         
     }
     
     
     &__vote {
-        background: linear-gradient($cp-l, $cp-d);
+        background: linear-gradient(60deg, $cp-l 3%, $cp-d);
         height: 120px;
         width: 120px;
         clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
@@ -61,21 +65,34 @@
         font-weight: 400;
         color: $cb;
         
-        background: linear-gradient($cp-l, $cp-d);
+        background: linear-gradient(60deg, $cp-l 3%, $cp-d);
         clip-path: polygon(10% 0%, 100% 0%, 90% 100%, 0% 100%);
         transition: .5s all;
     }
     
+    &__overview, &__date, &__genre{
+        padding: 2.5rem 3.5rem;
+        font-size: 1.6rem; 
+        line-height: 1.8;
+        background-color: transparent;
+        box-shadow: inset -2rem -2rem 2.4rem rgba($cb, .8), inset 1.5rem 1.5rem 2rem rgba($cb, .7);
+        transition: all 0.2s ease-out;
+        
+        &:hover {
+            transform: translateY(-3px);
+        }
+    }
     
     &__overview {
-        
+        font-size: 1.5rem;
+        text-align: justify;
     }
     
     &__date {
-        
+        margin: 3rem 0;
     }
     
     &__genre {
-        
+      
     }
 }
