@@ -41,14 +41,10 @@ html {
 } 
 
 body {
-    box-sizing: border-box;
-    background: #222;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #000000, 70%, #222);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(45deg ,#000000, 70% ,#222); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    background-repeat: no-repeat;
-    background-size: cover;
+    @include bg-gradient;
     
     // Default Styling
+    box-sizing: border-box;
     font-size: 1.8rem;
     font-family: $fs;
 }

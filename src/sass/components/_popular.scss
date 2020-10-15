@@ -10,6 +10,7 @@
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(50rem, 1fr));
         column-gap: 6rem;
+        grid-row-gap: 6rem;
         
         &--left{
             position: relative;

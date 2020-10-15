@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import { connect} from 'react-redux';
+
 import AOS from 'aos';
 import 'aos/dist/aos.css'; // You can also use <link> for styles
-
 import * as actions from '../../../store/actions/action';
 
 const Latest = props => {
@@ -41,16 +41,16 @@ const Latest = props => {
         movieDiv = (
             <div className='popular__container'>
                 <div className='popular__container--left'>
-                    <div class='popular__vote'>
-                        <div class="popular__vote--avg">{movie.vote_average}</div>
+                    <div className='popular__vote'>
+                        <div className="popular__vote--avg">{movie.vote_average}</div>
                     </div>
                     <img className = "popular__poster" src={movie.img} alt={movie.title} />
                     <h1 className="popular__title">{movie.title}</h1>
                 </div>
                 <div className="popular__container--right">
-                    <p class="popular__overview">{movie.overview}</p>
-                    <div className = "popular__date"><i class="far fa-calendar-alt"></i><span class='ml-2'>{movie.release_date}</span></div>
-                    <div className = "popular__genre" ><i class="fas fa-stream"></i><span class="ml-2">{movie_genres}</span></div>
+                    <p className="popular__overview">{movie.overview}</p>
+                    <div className = "popular__date"><i className="far fa-calendar-alt"></i><span className='ml-2'>{movie.release_date}</span></div>
+                    <div className = "popular__genre" ><i className="fas fa-stream"></i><span className="ml-2">{movie_genres}</span></div>
                 </div>
             </div>    
         );

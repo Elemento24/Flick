@@ -1,0 +1,32 @@
+.footer {
+    // experimental
+    height: 40rem;
+    width: 100%;
+    color: $cw;
+    background: linear-gradient(60deg, $cp-l 3%, $cp-d);
+    
+    color: $cb;
+    
+    display: grid;
+    grid-template-columns: minmax(3rem, 5rem) repeat(2, 1fr) minmax(3rem, 5rem);
+    column-gap: 4rem;
+    grid-row-gap: 4rem;
+    align-items: center;
+    justify-items: center;
+    
+    &__about{
+        grid-column: 2 / 4;
+    }
+    
+    &__elemento{
+         grid-column: 2 / 3;
+    }
+    
+    &__sid{
+        grid-column: 3 / 4;
+    }
+    
+    &__copyright{
+        grid-column: 2 / 4;
+    }
+}

@@ -1,0 +1,7 @@
+.backdrop {
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    background-color: rgba($cb, 0.85);
+    z-index: 2;
+}

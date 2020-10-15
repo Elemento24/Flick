@@ -13,7 +13,7 @@ const Layout = props => {
     
     const toggleSidebar = () => {
         setToggleSidebar(!isSideOpen);
-    }
+    };
     
     useEffect(() => {
         onGetGenres();
@@ -25,7 +25,7 @@ const Layout = props => {
 			<Navbar toggleSidebar = {toggleSidebar}  isSideOpen={isSideOpen}  />
             
             {/*SideBar For Navigation*/}
-            <Sidebar isSideOpen={isSideOpen}  />
+            <Sidebar isSideOpen={isSideOpen} toggleSidebar={toggleSidebar} />
             
             {/*Main*/}
             <main>{props.children}</main>

@@ -1,10 +1,17 @@
 .nav {
+    @include bg-gradient;
+    
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
     display: flex;
     align-items: center;
     padding: 0 3rem;
     justify-content: space-between;
     height: 9rem;
-    box-shadow: $bs-md-d;
+    box-shadow: $bs-md-m;
+    z-index: 3;
     
     &__logo-box {
         height: 5.5rem;
