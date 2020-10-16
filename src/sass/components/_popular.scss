@@ -4,9 +4,15 @@
     color: $cw;
     font-size: 2rem;
     
+    &__heading{
+        color: $cp;
+        width: max-content;
+        margin: 0 auto;
+    }
+    
     &__container {
         width: 70%;
-        margin: 6rem auto;
+        margin: 12rem auto;
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(50rem, 1fr));
         column-gap: 6rem;
@@ -25,7 +31,6 @@
         
     }
     
-    
     &__vote {
         background: linear-gradient(60deg, $cp-l 3%, $cp-d);
         height: 120px;
@@ -36,6 +41,7 @@
         position: absolute;
         top: -5rem;
         right: 2rem;
+        z-index: 2;
         
         @include respond(tab-land){
             right: 0;

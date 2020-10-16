@@ -1,11 +1,7 @@
 .footer {
-    // experimental
-    height: 40rem;
     width: 100%;
-    color: $cw;
+    padding: 4rem 0;
     background: linear-gradient(60deg, $cp-l 3%, $cp-d);
-    
-    color: $cb;
     
     display: grid;
     grid-template-columns: minmax(3rem, 5rem) repeat(2, 1fr) minmax(3rem, 5rem);
@@ -14,19 +10,89 @@
     align-items: center;
     justify-items: center;
     
+    &__heading{
+        width: max-content;
+        margin: 1rem auto;
+        padding: 1rem 2rem;
+        transition: all .3s linear;
+                
+        &:hover {
+            box-shadow: $bs-sm-l;
+        }
+    }
+    
+    &__text{
+        text-align: center;
+        margin: 0 0 1rem 0;
+        letter-spacing: 1px;
+    }
+    
     &__about{
         grid-column: 2 / 4;
+        
+        p{
+            padding: 0 12rem;
+            
+            @include respond(tab-port){
+                padding: 0 6rem;
+            }
+            @include respond(tab-phone){
+                padding: 0;
+            }
+        }
+    }
+    
+    &__elemento, &__sid {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    &__social {
+        margin: 0 auto;
+    }
+    
+    &__social-icon {
+        color: $cb;
+        font-size: 4rem;
+        margin: 0 1.5rem;
+        
+        i{
+            transform: translateY(0) scale(1);
+            transition: all .2s linear;
+            opacity: 0.6;
+          
+            &:hover{
+                opacity: 1;
+                transform: translateY(-2px) scale(1.04);
+            }  
+        }
     }
     
     &__elemento{
-         grid-column: 2 / 3;
+        grid-column: 2 / 3;
+        
+        @include respond(phone){
+            grid-column: 2 / 4;
+        }
     }
     
     &__sid{
         grid-column: 3 / 4;
+        
+        @include respond(phone){
+            grid-column: 2 / 4;
+        }
     }
     
     &__copyright{
         grid-column: 2 / 4;
+        opacity: .8;
+        padding: 1rem 2rem;
+        transition: all .2s linear;
+        
+        &:hover {
+            box-shadow: $bs-sm-m;
+        }
     }
+    
 }

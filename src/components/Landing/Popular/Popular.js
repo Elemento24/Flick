@@ -1,12 +1,9 @@
 import React, { useEffect } from 'react';
 import { connect} from 'react-redux';
 
-import AOS from 'aos';
-import 'aos/dist/aos.css'; // You can also use <link> for styles
 import * as actions from '../../../store/actions/action';
 
 const Latest = props => {
-    AOS.init();
     const {onGetPopular, genres, movie} = props;
     
     useEffect(() => {
@@ -44,13 +41,13 @@ const Latest = props => {
                     <div className='popular__vote'>
                         <div className="popular__vote--avg">{movie.vote_average}</div>
                     </div>
-                    <img className = "popular__poster" src={movie.img} alt={movie.title} />
-                    <h1 className="popular__title">{movie.title}</h1>
+                    <img className = "popular__poster" data-aos="fade-right" data-aos-duration="300" data-aos-delay="100" src={movie.img} alt={movie.title} />
+                    <h1 className="popular__title" data-aos="fade-right" data-aos-duration="300" data-aos-delay="50">{movie.title}</h1>
                 </div>
                 <div className="popular__container--right">
-                    <p className="popular__overview">{movie.overview}</p>
-                    <div className = "popular__date"><i className="far fa-calendar-alt"></i><span className='ml-2'>{movie.release_date}</span></div>
-                    <div className = "popular__genre" ><i className="fas fa-stream"></i><span className="ml-2">{movie_genres}</span></div>
+                    <p className="popular__overview" data-aos="fade-left" data-aos-duration="300" data-aos-delay="100">{movie.overview}</p>
+                    <div className = "popular__date" data-aos="fade-left" data-aos-duration="300" data-aos-delay="200"><i className="far fa-calendar-alt"></i><span className='ml-2'>{movie.release_date}</span></div>
+                    <div className = "popular__genre" data-aos="fade-left" data-aos-duration="300" data-aos-delay="300"><i className="fas fa-stream"></i><span className="ml-2">{movie_genres}</span></div>
                 </div>
             </div>    
         );
@@ -58,6 +55,7 @@ const Latest = props => {
     
     return (
       <div className='popular'>
+        <h1 className="heading-pri popular__heading" data-aos="fade-up" data-aos-duration="300">Most Popular Movie</h1>
         {movieDiv}
       </div>
     );
