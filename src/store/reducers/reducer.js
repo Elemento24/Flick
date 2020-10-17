@@ -11,6 +11,8 @@ const initialState = {
     trending: null,
     trendingLoading: false,
     trendingError: null,
+    trendingPage: 1,
+    trendinghasMore: true,
     
     searchResults: null,
     searchLoading: false,
@@ -57,21 +59,23 @@ const getPopularFail = (state,action) => {
 
 const getTrendingStart = (state, action) => {
     return updateObject(state, {
-        searchLoading: true
+        trendingLoading: true
     });  
 };
 
 const getTrendingSuccess = (state, action) => {
     return updateObject(state, {
-        searchResults: action.movies,
-        searchLoading: false
+        trending: state.trending.concat(action.movies),
+        trendingPage: action.page + 1,
+        trendingLoading: false
     });
 };
 
 const getTrendingFail = (state,action) => {
     return updateObject(state, {
-        searchLoading: false,
-        searchError: action.error
+        trendingLoading: false,
+        trendingError: action.error,
+        trendingHasMore: action.hasMore
     });
 };
 
@@ -81,21 +85,21 @@ const getTrendingFail = (state,action) => {
 
 const getSearchResultsStart = (state, action) => {
     return updateObject(state, {
-        trendingLoading: true
+        searchLoading: true
     });  
 };
 
 const getSearchResultsSuccess = (state, action) => {
     return updateObject(state, {
-        trending: action.movies,
-        trendingLoading: false
+        searchResults: action.movies,
+        searchLoading: false
     });
 };
 
 const getSearchResultsFail = (state,action) => {
     return updateObject(state, {
-        trendingLoading: false,
-        trendingError: action.error
+        searchLoading: false,
+        searchError: action.error
     });
 };
 

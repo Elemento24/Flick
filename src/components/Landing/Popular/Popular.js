@@ -10,15 +10,6 @@ const Latest = props => {
         onGetPopular();
     }, [onGetPopular]);
     
-    // original_title
-    // overview
-    // release_date
-    // genre
-    // vote_average
-    // vote_count
-    // original_language
-    // img
-    
     let movieDiv = null;
     const list_gen = [];
     if(!props.loading && !props.error){

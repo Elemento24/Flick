@@ -74,12 +74,19 @@ export const getPopularFail = (error) => {
 // TRENDING MOVIES
 // ================
 
-export const getTrending = () => {
+export const getTrending = (currentPage) => {
     return async dispatch => {
         dispatch(getTrendingStart());
         try{
-            const {data: trendingMovies} = await axiosMovie.get(`/trending/all/day?api_key=${process.env.REACT_APP_API_KEY}`);      
-            console.log(trendingMovies);
+            let hasMore = true;
+            const {data} = await axiosMovie.get(`/trending/all/day?api_key=${process.env.REACT_APP_API_KEY}&page=${currentPage}`); 
+            const { results, total_pages, page } = data;
+            
+            if(currentPage + 1 > total_pages){
+                hasMore = false;
+            }
+            
+            dispatch(getTrendingSuccess(results, page, hasMore ));
         } catch(error){
             dispatch(getTrendingFail(error));
         }
@@ -88,14 +95,16 @@ export const getTrending = () => {
 
 export const getTrendingStart = () => {
     return {
-        type: actionTypes.GET_POPULAR_START
+        type: actionTypes.GET_TRENDING_START
     };
 };
 
-export const getTrendingSuccess = (movies) => {
+export const getTrendingSuccess = (movies, page, hasMore) => {
     return {
         type: actionTypes.GET_TRENDING_SUCCESS,
-        movies
+        movies,
+        page,
+        hasMore
     };
 };
 
