@@ -79,14 +79,19 @@ export const getTrending = (currentPage) => {
         dispatch(getTrendingStart());
         try{
             let hasMore = true;
-            const {data} = await axiosMovie.get(`/trending/all/day?api_key=${process.env.REACT_APP_API_KEY}&page=${currentPage}`); 
+            const {data} = await axiosMovie.get(`/trending/movie/day?api_key=${process.env.REACT_APP_API_KEY}&page=${currentPage}`); 
             const { results, total_pages, page } = data;
+            
+            const newResults = results.map(movie => {
+                let movie_img = `https://image.tmdb.org/t/p/w500/${movie.poster_path}`;
+                return {...movie, img: movie_img};
+            });
             
             if(currentPage + 1 > total_pages){
                 hasMore = false;
             }
             
-            dispatch(getTrendingSuccess(results, page, hasMore ));
+            dispatch(getTrendingSuccess(newResults, page, hasMore ));
         } catch(error){
             dispatch(getTrendingFail(error));
         }

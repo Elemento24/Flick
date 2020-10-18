@@ -8,11 +8,11 @@ const initialState = {
     popularLoading: true,
     popularError: null,
     
-    trending: null,
+    trending: [],
     trendingLoading: false,
     trendingError: null,
     trendingPage: 1,
-    trendinghasMore: true,
+    trendingHasMore: true,
     
     searchResults: null,
     searchLoading: false,
@@ -65,7 +65,7 @@ const getTrendingStart = (state, action) => {
 
 const getTrendingSuccess = (state, action) => {
     return updateObject(state, {
-        trending: state.trending.concat(action.movies),
+        trending: [...state.trending, ...action.movies],
         trendingPage: action.page + 1,
         trendingLoading: false
     });
