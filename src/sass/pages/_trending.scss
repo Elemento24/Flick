@@ -1,13 +1,72 @@
 .trending{
-    margin-top: 15rem;
-    color: $cw;
-    overflow-anchor: none;
+    
+    &__heading{
+        text-align: center;
+        margin-top: 18rem;
+        margin-bottom: 6rem;
+        color: $cw;
+    }
     
     &__movies{
-        margin-top: 10rem;
+        
     }
-}
-
-.render{
-    // margin-top: 10rem;
+    
+    &__movie{
+        position: relative;
+        width: 35rem;
+        margin: 4rem;
+    }
+    
+    &__imgDiv{
+        height: 100%;
+        width: 100%;
+    }
+    
+    &__img{
+        height: 100%;
+        width: 100%;
+    }
+    
+    &__overlay{
+        height: 10rem;
+        width: 10rem;
+        background-color: $cb;
+        position: absolute;
+        bottom: 5px;
+        right: 0;
+        clip-path: circle(30% at 100% 100%);
+        
+        &--1{
+            
+        }
+        
+        &--2{
+            
+        }
+        
+        &--3{
+            
+        }
+    }
+    
+    &__content{
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        display: none;
+    }
+    
+    &__title{
+        
+    }
+    
+    &__year{
+        
+    }
+    
+    &__rating{
+        
+    }
 }

@@ -12,9 +12,19 @@ const Trending = (props) => {
     if(props.movies){
         props.movies.forEach((movie,ind) => {
             items.push(
-                <div>
-                    <h1>{movie.title}</h1>
-                    <img src={movie.img} alt={movie.title} style={{height: '400px'}}/>
+                <div className='trending__movie'>
+                    <div className = "trending__imgDiv">
+                        <img class='trending__img' src={movie.img} alt={movie.title}/>
+                    </div>
+                    <div className="trending__overlay"></div>
+                    <div className="trending__overlay trending__overlay--1"></div>
+                    <div className="trending__overlay trending__overlay--2"></div>
+                    <div className="trending__overlay trending__overlay--3"></div>
+                    <div className= "trending__content" >
+                        <h2 className='trending__title'>{movie.title}</h2>
+                        <p className = "trending__year" >{movie.releaseYear}</p>
+                        <h1 className='trending__rating'> STAR {movie.vote_average}</h1>
+                    </div>
                 </div>
             );
         });
@@ -22,7 +32,7 @@ const Trending = (props) => {
     
     return (
         <div className="trending">
-            <h1 className="heading-pri trending__heading">Trending Now ...</h1>
+            <h1 className="heading-pri trending__heading">Trending Now</h1>
             {/*<button onClick={(page) => props.onGetTrending(props.page)}>Click</button>*/}
             <InfiniteScroll
                 loadMore={(page) => props.onGetTrending(props.page)}

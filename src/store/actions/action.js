@@ -84,7 +84,8 @@ export const getTrending = (currentPage) => {
             
             const newResults = results.map(movie => {
                 let movie_img = `https://image.tmdb.org/t/p/w500/${movie.poster_path}`;
-                return {...movie, img: movie_img};
+                let releaseYear = movie.release_date.split('-')[0];
+                return {...movie, img: movie_img, releaseYear};
             });
             
             if(currentPage + 1 > total_pages){
