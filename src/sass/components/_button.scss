@@ -1,0 +1,16 @@
+.button{
+    border: none;
+    outline: none;
+    text-decoration: none;
+    padding: 1rem 2rem;
+    clip-path: polygon(10% 0%, 100% 0%, 90% 100%, 0% 100%); 
+    
+    font-family: $fp;
+    font-weight: 400;
+    font-size: 2rem;
+    text-transform: uppercase;
+    letter-spacing: 1.1px;
+    
+    background-color: $cp;
+    color: $cb;
+}

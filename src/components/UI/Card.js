@@ -1,0 +1,47 @@
+import React from 'react';
+import Button from './Button';
+import { ReactComponent as Star } from '../../assets/star.svg';
+
+function movieClick(id){
+    let children = document.getElementById(`${id}`).childNodes;
+    const overlay1 = children[1];
+    const overlay2 = children[2];
+    const overlay3 = children[3];
+    const content = children[4];
+    
+    overlay1.classList.toggle('card__overlay--1-active');
+    overlay2.classList.toggle('card__overlay--2-active');
+    overlay3.classList.toggle('card__overlay--3-active');
+    content.classList.toggle('card__content--active');
+}
+
+const Card = props => {
+    return (
+            <div
+                className='card__movie' 
+                id={props.movie.id} 
+                key={props.movie.id} 
+                data-aos='fade-up'
+                data-aos-duration="500"
+                onClick={(id) => movieClick(props.movie.id)}
+            >
+                <div className = "card__imgDiv">
+                    <img className='card__img' src={props.movie.img} alt={props.movie.title}/>
+                </div>
+                <div className="card__overlay card__overlay--1"></div>
+                <div className="card__overlay card__overlay--2"></div>
+                <div className="card__overlay card__overlay--3"></div>
+                <div className= "card__content" >
+                    <h1 className='card__title mb-1'>{props.movie.title}</h1>
+                    <p className = "card__year" >({props.movie.releaseYear})</p>
+                    <div className="card__rating-box my-3">
+                        <Star className="card__rating-star"/> 
+                        <h1 className='card__rating'>{props.movie.vote_average}</h1>
+                    </div>
+                    <Button className='card__button'>Read More</Button>
+                </div>
+            </div>
+    );
+};
+
+export default Card;

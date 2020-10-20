@@ -1,40 +1,4 @@
-.trending{
-    &__heading-box {
-        margin-top: 18rem;
-        margin-bottom: 6rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        height: max-content;
-        
-    }
-    
-    &__heading{
-        margin-right: 2rem;
-        text-align: center;
-        color: $cw;
-        text-transform: uppercase;
-    }
-    
-    
-    &__heading-icon {
-        fill: $cp;
-        width: 5rem;
-        height: 5rem;
-    }
-    
-    &__movies{
-        display: grid;
-        padding: 0 5rem;
-        grid-template-columns: repeat(auto-fit, minmax(35rem, 1fr));
-        column-gap: 4rem;
-        row-gap: 6rem;
-        justify-items: center;
-        
-        @include respond(tab-land) {
-            column-gap: 2rem;
-        }
-    }
+.card{
     
     &__movie{
         position: relative;
@@ -153,5 +117,4 @@
         font-weight: 200;
         font-size: 5rem;
     }
-    
 }

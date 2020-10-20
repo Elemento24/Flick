@@ -5,7 +5,7 @@ import * as actions from '../../store/actions/action';
 
 const SearchResults = (props) => {
     return (
-        <div>
+        <div style={{"margin-top": "100px"}}>
             <h1>THIS IS THE SEARCH RESULTS PAGE</h1>
             <button onClick = { props.onSearch } > CLICK HERE FOR SEARCH RESULTS </button>
         </div>    

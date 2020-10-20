@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom'; 
 
 import Logo from '../../assets/logo.png';
 
@@ -8,7 +9,9 @@ const Navbar = (props) => {
     return(
         <div className='nav'>
             <figure className='nav__logo-box'>
-                <img className='nav__logo' src={Logo} alt="Logo" />
+                <Link to = "/">
+                    <img className='nav__logo' src={Logo} alt="Logo" />
+                </Link>
             </figure>
             <figcaption className = "nav__brand-box">
                 <h1 className='nav__brand pl-2'>Flick</h1>
