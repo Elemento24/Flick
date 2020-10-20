@@ -4,14 +4,12 @@ import { ReactComponent as Star } from '../../assets/star.svg';
 
 function movieClick(id){
     let children = document.getElementById(`${id}`).childNodes;
-    const overlay1 = children[1];
-    const overlay2 = children[2];
-    const overlay3 = children[3];
     const content = children[4];
     
-    overlay1.classList.toggle('card__overlay--1-active');
-    overlay2.classList.toggle('card__overlay--2-active');
-    overlay3.classList.toggle('card__overlay--3-active');
+    for (let index=1; index<=3; index++) {
+        children[index].classList.toggle(`card__overlay--${index}-active`);
+    }
+    
     content.classList.toggle('card__content--active');
 }
 
@@ -19,8 +17,7 @@ const Card = props => {
     return (
             <div
                 className='card__movie' 
-                id={props.movie.id} 
-                key={props.movie.id} 
+                id={props.movie.id}
                 data-aos='fade-up'
                 data-aos-duration="500"
                 onClick={(id) => movieClick(props.movie.id)}
