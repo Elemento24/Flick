@@ -45,7 +45,7 @@ const Latest = props => {
     }
     
     return (
-      <div className='popular'>
+      <div className='popular' id = "popular">
         <h1 className="heading-pri popular__heading" data-aos="fade-up" data-aos-duration="300">Most Popular Movie</h1>
         {movieDiv}
       </div>
