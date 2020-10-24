@@ -1,0 +1,16 @@
+.topBtn{
+    display: inline-block;
+    
+    &__btn{
+        border-radius: 50%;
+        box-shadow: $bs-lg-d;
+        background-color: $cp;
+        height: 6rem;
+        width: 6rem;
+    }
+    
+    &__svg{
+        height: 55%;
+        width: 55%;
+    }
+}
