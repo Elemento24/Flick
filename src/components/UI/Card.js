@@ -1,4 +1,6 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
+
 import Button from './Button';
 import { ReactComponent as Star } from '../../assets/star.svg';
 
@@ -14,6 +16,8 @@ function movieClick(id){
 }
 
 const Card = props => {
+    const link = `/movie/${props.movie.id}`;
+    
     return (
             <div
                 className='card__movie' 
@@ -35,7 +39,11 @@ const Card = props => {
                         <Star className="card__rating-star"/> 
                         <h1 className='card__rating'>{props.movie.vote_average}</h1>
                     </div>
-                    <Button className='card__button'>Read More</Button>
+                    <Button className='card__button'>
+                        <Link className="card__btn" to={link}>
+                            Read More
+                        </Link>
+                    </Button>
                 </div>
             </div>
     );

@@ -16,7 +16,11 @@ const initialState = {
     
     searchResults: null,
     searchLoading: false,
-    searchError: null
+    searchError: null,
+    
+    movie: null,
+    movieLoading: false,
+    movieError: null
 };
 
 // ======
@@ -103,6 +107,30 @@ const getSearchResultsFail = (state,action) => {
     });
 };
 
+// ================
+// SHOW PAGE MOVIE
+// ================
+
+const getMovieStart = (state, action) => {
+    return updateObject(state, {
+        movieLoading: true
+    });  
+};
+
+const getMovieSuccess = (state, action) => {
+    return updateObject(state, {
+        movie: action.movie,
+        movieLoading: false
+    });
+};
+
+const getMovieFail = (state,action) => {
+    return updateObject(state, {
+        movieLoading: false,
+        movieError: action.error
+    });
+};
+
 // ========
 // REDUCER
 // ========
@@ -122,6 +150,10 @@ const reducer = (state = initialState, action) => {
         case actionTypes.GET_SEARCH_RESULTS_START: return getSearchResultsStart(state, action);
         case actionTypes.GET_SEARCH_RESULTS_SUCCESS: return getSearchResultsSuccess(state, action);
         case actionTypes.GET_SEARCH_RESULTS_FAIL: return getSearchResultsFail(state, action);
+        
+        case actionTypes.GET_MOVIE_START: return getMovieStart(state, action);
+        case actionTypes.GET_MOVIE_SUCCESS: return getMovieSuccess(state, action);
+        case actionTypes.GET_MOVIE_FAIL: return getMovieFail(state, action);
         
         default: return state;
     }

@@ -157,3 +157,53 @@ export const getSearchResultsFail = (error) => {
     };
 };
 
+// ================
+// SHOW PAGE MOVIE
+// ================
+
+export const getMovie = (id) => {
+    return async dispatch => {
+      dispatch(getMovieStart());
+      try{
+          // Get the Movie and it's Poster
+          let {data: movie} = await axiosMovie.get(`/movie/${id}?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`);
+          const movie_img = `https://image.tmdb.org/t/p/w780/${movie.poster_path}`;
+          
+          // Get Similar Movies and their Posters
+          let {data: sim_movies} = await axiosMovie.get(`/movie/${id}/similar?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`);
+          sim_movies = sim_movies.results;
+          
+          sim_movies = sim_movies.map(movie => {
+                let movie_img = `https://image.tmdb.org/t/p/w500/${movie.poster_path}`;
+                let releaseYear = movie.release_date.split('-')[0];
+                return {...movie, img: movie_img, releaseYear};
+          });
+          
+          movie = {...movie, img: movie_img, sim_movies};
+          dispatch(getMovieSuccess(movie));
+          
+      } catch(error){
+          dispatch(getMovieFail(error));
+      }
+    };
+};
+
+export const getMovieStart = () => {
+    return {
+        type: actionTypes.GET_MOVIE_START
+    };
+};
+
+export const getMovieSuccess = (movie) => {
+    return {
+        type: actionTypes.GET_MOVIE_SUCCESS,
+        movie
+    };
+};
+
+export const getMovieFail = (error) => {
+    return {
+        type: actionTypes.GET_MOVIE_FAIL,
+        error
+    };
+};
