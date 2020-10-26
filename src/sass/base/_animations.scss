@@ -21,3 +21,38 @@
         opacity: 0;
     }
 }
+
+@keyframes rotateClock{
+    0%{
+        transform: rotate(0deg);
+    }
+    
+    50%{
+        transform: rotate(180deg);
+    }
+    
+    100%{
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes rotateStar{
+    0%{
+        transform: rotate(0deg);
+    }
+    20%{
+        transform: rotate(72deg);
+    }
+    40%{
+        transform: rotate(144deg);
+    }
+    60%{
+        transform: rotate(216deg);
+    }
+    80%{
+        transform: rotate(288deg);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+}
