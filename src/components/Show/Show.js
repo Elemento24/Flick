@@ -1,7 +1,11 @@
 import React, {Fragment, useEffect} from 'react';
 import {connect} from 'react-redux';
+import { animateScroll as scroll } from 'react-scroll';
 
 import * as actions from '../../store/actions/action';
+import Card from '../UI/Card';
+import Loader from '../UI/Loader';
+import TopButton from '../UI/TopButton';
 import { ReactComponent as Clock } from '../../assets/clock.svg';
 import { ReactComponent as Star } from '../../assets/show-star.svg';
 import { ReactComponent as Calender } from '../../assets/calendar.svg';
@@ -16,8 +20,28 @@ const ShowMovie = props => {
         onGetMovie(ID);
     }, [onGetMovie, ID]);
     
-    if(movie){
+    const scrollTop = () => {
+        scroll.scrollToTop({
+            smooth: true,
+            duration: 100
+        });
+    };
+    
+    if(props.loading){
+        movieDiv = (
+            <div className='show__loader'>
+                <Loader />
+            </div>    
+        );
+    }
+    
+    if(movie && !props.loading){
         const {date, month, year} = convertDate(movie.release_date);
+        const similarMovies = movie.sim_movies.map(movie => {
+            return (
+                <Card movie={movie} key={movie.id} scrollFun={scrollTop}/>
+            );
+        });
         
         movieDiv = (
             <Fragment>
@@ -25,6 +49,7 @@ const ShowMovie = props => {
                     <h1 className='heading-pri show__title'>{movie.title}</h1>
                     {movie.tagline ? <p className='show__tag'>-{movie.tagline}</p> : null}
                 </div>
+                
                 <div className='show__movie'>
                     <div className='show__content'>
                         <div className = "show__overview">{movie.overview}</div>
@@ -56,23 +81,40 @@ const ShowMovie = props => {
                         </div>
                     </div>
                 </div>
+                
                 <div className='show__similar'>
-                    {props.movie.original_title}
+                
+                    <div className='show__simHeadBox my-7'>
+                        <h1 className='heading-pri show__simHead'>Similar Movies...</h1>
+                    </div>
+                    
+                    <div className='show__simMovies'>
+                        {similarMovies}
+                    </div>
+                
                 </div>
+                
             </Fragment>
         );
     }
     
     return (
-        <main className="show mb-10">
-            {movieDiv}
-        </main>
+        <Fragment>
+            <div className="show mb-10">
+                <div className = "show__top-button">
+                    <TopButton />
+                </div>
+                {movieDiv}
+            </div>
+        </Fragment>
+        
     );
 };
 
 const mapStateToProps = state => {
     return {
-        movie: state.movie
+        movie: state.movie,
+        loading: state.movieLoading
     };
 };
 

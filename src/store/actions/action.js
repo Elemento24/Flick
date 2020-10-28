@@ -180,7 +180,10 @@ export const getMovie = (id) => {
           });
           
           movie = {...movie, img: movie_img, sim_movies};
-          dispatch(getMovieSuccess(movie));
+          
+          setTimeout(() => {
+            dispatch(getMovieSuccess(movie));
+          },1000);
           
       } catch(error){
           dispatch(getMovieFail(error));

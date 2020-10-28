@@ -33,14 +33,14 @@ const Card = props => {
                 <div className="card__overlay card__overlay--2"></div>
                 <div className="card__overlay card__overlay--3"></div>
                 <div className= "card__content" >
-                    <h1 className='card__title mb-1'>{props.movie.title}</h1>
+                    <h1 className='card__title mb-1'>{props.movie.title.substring(0,50)} {props.movie.title.length >= 50 ? '...' : null}</h1>
                     <p className = "card__year" >({props.movie.releaseYear})</p>
                     <div className="card__rating-box my-3">
                         <Star className="card__rating-star"/> 
                         <h1 className='card__rating'>{props.movie.vote_average}</h1>
                     </div>
                     <Button className='card__button'>
-                        <Link className="card__btn" to={link}>
+                        <Link className="card__btn" to={link} onClick={props.scrollFun ? props.scrollFun : null}>
                             Read More
                         </Link>
                     </Button>
