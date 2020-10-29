@@ -16,16 +16,18 @@ const ShowMovie = props => {
     const {onGetMovie, movie} = props;
     let movieDiv = null;
     
-    useEffect(() => {
-        onGetMovie(ID);
-    }, [onGetMovie, ID]);
-    
-    const scrollTop = () => {
+    const scrollTop = (duration) => {
         scroll.scrollToTop({
             smooth: true,
-            duration: 100
+            duration
         });
     };
+    
+    useEffect(() => {
+        onGetMovie(ID);
+        scrollTop(0);
+    }, [onGetMovie, ID]);
+    
     
     if(props.loading){
         movieDiv = (
@@ -39,7 +41,7 @@ const ShowMovie = props => {
         const {date, month, year} = convertDate(movie.release_date);
         const similarMovies = movie.sim_movies.map(movie => {
             return (
-                <Card movie={movie} key={movie.id} scrollFun={scrollTop}/>
+                <Card movie={movie} key={movie.id} scrollFun={(duration) => scrollTop(100)}/>
             );
         });
         

@@ -1,5 +1,6 @@
 .trending{
     position: relative;
+    min-height: 100vh;
     
     &__heading-box {
         margin-top: 15rem;
@@ -28,6 +29,14 @@
         bottom: 4rem;
         right: 4rem;
         z-index: 5;
+    }
+    
+    &__loader-container {
+        min-height: 50vh;
+    }
+    
+    &__loader {
+        @include absCenter;
     }
     
     &__movies{

@@ -28,7 +28,7 @@ const Layout = props => {
             <Sidebar isSideOpen={isSideOpen} toggleSidebar={toggleSidebar} />
             
             {/*Main*/}
-            <main>{props.children}</main>
+            <main className='layout__main'>{props.children}</main>
             
             {/*Footer*/}
             <Footer />

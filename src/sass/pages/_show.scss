@@ -119,6 +119,7 @@
     }
     
     &__img-box{
+        
         @include respond(tab-port){
             order: -1;
         }
@@ -127,9 +128,13 @@
     &__img-div{
         margin: 0 auto;
         width: 50rem;
+        object-fit: fill;
+        box-shadow: $bs-lg-d;
+        height: 75rem;
     }
     
     &__img{
+        object-fit: fill;
         height: 100%;
         width: 100%;
     }

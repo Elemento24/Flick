@@ -5,11 +5,11 @@ import Loader from 'react-loader-spinner';
 const LoadingSpinner = props => {
     return(
         <Loader
-            type="Ball-Triangle"
+            type="Audio"
             color="#F9690E"
             height={75}
             width={75}
-            timeout={30000}
+            timeout={3000000}
         />
     );
 };

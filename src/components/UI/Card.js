@@ -1,5 +1,4 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
 
 import Button from './Button';
 import { ReactComponent as Star } from '../../assets/star.svg';
@@ -39,14 +38,12 @@ const Card = props => {
                         <Star className="card__rating-star"/> 
                         <h1 className='card__rating'>{props.movie.vote_average}</h1>
                     </div>
-                    <Button className='card__button'>
-                        <Link className="card__btn" to={link} onClick={props.scrollFun ? props.scrollFun : null}>
-                            Read More
-                        </Link>
+                    <Button className='card__button' to={link} clickHand={props.scrollFun ? props.scrollFun : null}>
+                        Read More
                     </Button>
                 </div>
             </div>
     );
 };
 
-export default Card;
+export default Card

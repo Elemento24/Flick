@@ -7,11 +7,12 @@ import axiosMovie from '../../axios-url';
 
 export const getGenres = () => {
     return async dispatch => {
-        try{
+        try {
             const genres = await axiosMovie.get(`/genre/movie/list?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`);
             const list = genres.data.genres;
             dispatch(getGenresSuccess(list))
-        }catch(error){
+        }
+        catch (error) {
             console.log(`GENRES ERROR -> ${error}`);
         }
     };
@@ -21,8 +22,8 @@ export const getGenresSuccess = (genres) => {
     return {
         type: actionTypes.GET_GENRES,
         genres
-    }
-}
+    };
+};
 
 // =============
 // POPULAR MOVIE
@@ -34,17 +35,18 @@ export const getPopular = () => {
         try {
             // Get the Array of Most Popular Movies
             const results = await axiosMovie.get(`/discover/movie?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1`);
-            
+
             // Get the most Popular movie out of the Array
             const movie_data = results.data.results[0];
-            
+
             // Get the Poster of the Movie
             let movie_img = `https://image.tmdb.org/t/p/w500/${movie_data.poster_path}`;
-            
-            const movie = {...movie_data, img: movie_img};
+
+            const movie = { ...movie_data, img: movie_img };
             dispatch(getPopularSuccess(movie));
-            
-        } catch (error) {
+
+        }
+        catch (error) {
             dispatch(getPopularFail(error));
         }
     };
@@ -77,23 +79,27 @@ export const getPopularFail = (error) => {
 export const getTrending = (currentPage) => {
     return async dispatch => {
         dispatch(getTrendingStart());
-        try{
+        try {
             let hasMore = true;
-            const {data} = await axiosMovie.get(`/trending/movie/day?api_key=${process.env.REACT_APP_API_KEY}&page=${currentPage}`); 
+            const { data } = await axiosMovie.get(`/trending/movie/day?api_key=${process.env.REACT_APP_API_KEY}&page=${currentPage}`);
             const { results, total_pages, page } = data;
-            
+
             const newResults = results.map(movie => {
                 let movie_img = `https://image.tmdb.org/t/p/w500/${movie.poster_path}`;
                 let releaseYear = movie.release_date.split('-')[0];
-                return {...movie, img: movie_img, releaseYear};
+                return { ...movie, img: movie_img, releaseYear };
             });
-            
-            if(currentPage + 1 > total_pages){
+
+            if (currentPage + 1 > total_pages) {
                 hasMore = false;
             }
-            
-            dispatch(getTrendingSuccess(newResults, page, hasMore ));
-        } catch(error){
+
+            setTimeout(() => {
+                dispatch(getTrendingSuccess(newResults, page, hasMore));
+            }, 1000);
+
+        }
+        catch (error) {
             dispatch(getTrendingFail(error));
         }
     };
@@ -125,15 +131,26 @@ export const getTrendingFail = (error) => {
 // SEARCH MOVIES
 // ===============
 
-export const getSearchResults = () => {
+export const getSearchResults = (query) => {
     return async dispatch => {
-      dispatch(getSearchResultsStart());
-      try{
-          const {data: searchResults} = await axiosMovie.get(`/search/movie?api_key=${process.env.REACT_APP_API_KEY}&query=wolves&page=1&language=en-US`);
-          console.log(searchResults);
-      } catch(error){
-          dispatch(getSearchResultsFail(error));
-      }
+        dispatch(getSearchResultsStart());
+        if(query && query.length > 0){
+            try {
+                const { data } = await axiosMovie.get(`/search/movie?api_key=${process.env.REACT_APP_API_KEY}&query=${query}&page=1&language=en-US`);
+                const { results } = data;
+                
+                const newResults = results.map(movie => {
+                    let movie_img = `https://image.tmdb.org/t/p/w500/${movie.poster_path}`;
+                    let releaseYear = movie.release_date.split('-')[0];
+                    return { ...movie, img: movie_img, releaseYear };
+                });
+                
+                dispatch(getSearchResultsSuccess(newResults));
+            }
+            catch (error) {
+                dispatch(getSearchResultsFail(error));
+            }
+        }
     };
 };
 
@@ -163,31 +180,32 @@ export const getSearchResultsFail = (error) => {
 
 export const getMovie = (id) => {
     return async dispatch => {
-      dispatch(getMovieStart());
-      try{
-          // Get the Movie and it's Poster
-          let {data: movie} = await axiosMovie.get(`/movie/${id}?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`);
-          const movie_img = `https://image.tmdb.org/t/p/w780/${movie.poster_path}`;
-          
-          // Get Similar Movies and their Posters
-          let {data: sim_movies} = await axiosMovie.get(`/movie/${id}/similar?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`);
-          sim_movies = sim_movies.results;
-          
-          sim_movies = sim_movies.map(movie => {
+        dispatch(getMovieStart());
+        try {
+            // Get the Movie and it's Poster
+            let { data: movie } = await axiosMovie.get(`/movie/${id}?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`);
+            const movie_img = `https://image.tmdb.org/t/p/w780/${movie.poster_path}`;
+
+            // Get Similar Movies and their Posters
+            let { data: sim_movies } = await axiosMovie.get(`/movie/${id}/similar?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`);
+            sim_movies = sim_movies.results;
+
+            sim_movies = sim_movies.map(movie => {
                 let movie_img = `https://image.tmdb.org/t/p/w500/${movie.poster_path}`;
                 let releaseYear = movie.release_date.split('-')[0];
-                return {...movie, img: movie_img, releaseYear};
-          });
-          
-          movie = {...movie, img: movie_img, sim_movies};
-          
-          setTimeout(() => {
-            dispatch(getMovieSuccess(movie));
-          },1000);
-          
-      } catch(error){
-          dispatch(getMovieFail(error));
-      }
+                return { ...movie, img: movie_img, releaseYear };
+            });
+
+            movie = { ...movie, img: movie_img, sim_movies };
+
+            setTimeout(() => {
+                dispatch(getMovieSuccess(movie));
+            }, 1000);
+
+        }
+        catch (error) {
+            dispatch(getMovieFail(error));
+        }
     };
 };
 

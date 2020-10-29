@@ -71,15 +71,15 @@ const getTrendingSuccess = (state, action) => {
     return updateObject(state, {
         trending: [...state.trending, ...action.movies],
         trendingPage: action.page + 1,
-        trendingLoading: false
+        trendingLoading: false,
+        trendingHasMore: action.hasMore
     });
 };
 
 const getTrendingFail = (state,action) => {
     return updateObject(state, {
         trendingLoading: false,
-        trendingError: action.error,
-        trendingHasMore: action.hasMore
+        trendingError: action.error
     });
 };
 
