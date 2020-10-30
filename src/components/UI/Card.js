@@ -20,10 +20,10 @@ const Card = props => {
     return (
             <div
                 className='card__movie' 
-                id={props.movie.id}
+                id={props.movie.movie_id}
                 data-aos='fade-up'
                 data-aos-duration="500"
-                onClick={(id) => movieClick(props.movie.id)}
+                onClick={(id) => movieClick(props.movie.movie_id)}
             >
                 <div className = "card__imgDiv">
                     <img className='card__img' src={props.movie.img} alt={props.movie.title}/>

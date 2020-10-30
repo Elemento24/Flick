@@ -1,0 +1,44 @@
+.cast{
+    position: relative;
+    padding: 5px;
+    background: $orange-gradient;
+    box-shadow: $bs-lg-d;
+    display: flex;
+    align-items: center;
+    
+    &__imgBox{
+        width: 8rem;
+        height: 10rem;
+    }
+    
+    &__img{
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        background-position: center;
+    }
+    
+    &__detailsBox{
+        width: 22rem;
+        padding: 0 5px;
+        
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    &__name{
+        font-size: 2rem;
+        text-align: center;
+    }
+    
+    &__char{
+        font-size: 1.4rem;
+        text-align: center;
+    }
+    
+    &__as{
+        font-size: 1rem;
+    }
+}

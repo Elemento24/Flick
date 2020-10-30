@@ -1,0 +1,11 @@
+.crew {
+    background: $orange-gradient;
+    width: 30rem;
+    padding: 1rem;
+    text-align: center;
+    box-shadow: $bs-lg-d;
+    
+    &__job{
+        font-size: 1.4rem;
+    }
+}

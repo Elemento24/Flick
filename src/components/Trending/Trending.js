@@ -23,12 +23,12 @@ const Trending = (props) => {
     if(props.movies){
         props.movies.forEach((movie,ind) => {
             items.push(
-                <Card movie={movie} key={movie.id}/>
+                <Card movie={movie} key={movie.movie_id}/>
             );
         });
     }
     
-    if (!props.loading) {
+    if (!props.loading || props.movies.length > 0) {
         content = (
             <Fragment>
                 <div className = "trending__heading-box">

@@ -4,7 +4,6 @@
     
     &__heading-box {
         margin-top: 15rem;
-        margin-bottom: 6rem;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -40,6 +39,7 @@
     }
     
     &__movies{
+        margin: 5rem 0;
         display: grid;
         padding: 0 5rem;
         grid-template-columns: repeat(auto-fit, minmax(35rem, 1fr));

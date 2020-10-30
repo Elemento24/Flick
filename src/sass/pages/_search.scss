@@ -76,6 +76,19 @@
         transform: translateY(-50%);
     }
     
+    &__movies{
+        display: grid;
+        padding: 0 5rem;
+        grid-template-columns: repeat(auto-fit, minmax(35rem, 1fr));
+        column-gap: 4rem;
+        row-gap: 6rem;
+        justify-items: center;
+        
+        @include respond(tab-land) {
+            column-gap: 2rem;
+        }
+    }
+    
     &__loader-container {
         min-height: 50vh;
     }

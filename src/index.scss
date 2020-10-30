@@ -11,14 +11,17 @@
 @import './sass/pages/_show.scss';
 @import './sass/pages/_trending.scss';
 
-@import './sass/components/_backdrop.scss';
 @import './sass/components/_button.scss';
 @import './sass/components/_card.scss';
+@import './sass/components/_castCard.scss';
+@import './sass/components/_crewCard.scss';
 @import './sass/components/_footer.scss';
-@import './sass/components/_layout.scss';
-@import './sass/components/_navbar.scss';
 @import './sass/components/_popular.scss';
-@import './sass/components/_sidebar.scss';
-@import './sass/components/_topButton.scss';
 @import './sass/components/_welcome.scss';
 @import './sass/components/_scroll.scss';
+
+@import './sass/layout/_backdrop.scss';
+@import './sass/layout/_layout.scss';
+@import './sass/layout/_navbar.scss';
+@import './sass/layout/_sidebar.scss';
+@import './sass/layout/_topButton.scss';

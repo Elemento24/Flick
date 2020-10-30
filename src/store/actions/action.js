@@ -1,5 +1,6 @@
 import * as actionTypes from './actionTypes';
 import axiosMovie from '../../axios-url';
+import uniqid from 'uniqid';
 
 // ======
 // GENRES
@@ -87,16 +88,21 @@ export const getTrending = (currentPage) => {
             const newResults = results.map(movie => {
                 let movie_img = `https://image.tmdb.org/t/p/w500/${movie.poster_path}`;
                 let releaseYear = movie.release_date.split('-')[0];
-                return { ...movie, img: movie_img, releaseYear };
+                let movie_id = uniqid();
+                return { ...movie, img: movie_img, releaseYear, movie_id };
             });
 
             if (currentPage + 1 > total_pages) {
                 hasMore = false;
             }
-
-            setTimeout(() => {
+            
+            if(currentPage === 1){
+                setTimeout(() => {
+                    dispatch(getTrendingSuccess(newResults, page, hasMore));
+                }, 1000);
+            } else {
                 dispatch(getTrendingSuccess(newResults, page, hasMore));
-            }, 1000);
+            }
 
         }
         catch (error) {
@@ -139,10 +145,16 @@ export const getSearchResults = (query) => {
                 const { data } = await axiosMovie.get(`/search/movie?api_key=${process.env.REACT_APP_API_KEY}&query=${query}&page=1&language=en-US`);
                 const { results } = data;
                 
-                const newResults = results.map(movie => {
+                const  movies = results.filter(movie => {
+                    if (movie.poster_path) return true;
+                    return false;
+                });
+                
+                const newResults = movies.map(movie => {
                     let movie_img = `https://image.tmdb.org/t/p/w500/${movie.poster_path}`;
                     let releaseYear = movie.release_date.split('-')[0];
-                    return { ...movie, img: movie_img, releaseYear };
+                    let movie_id = uniqid();
+                    return { ...movie, img: movie_img, releaseYear, movie_id };
                 });
                 
                 dispatch(getSearchResultsSuccess(newResults));
@@ -183,20 +195,32 @@ export const getMovie = (id) => {
         dispatch(getMovieStart());
         try {
             // Get the Movie and it's Poster
-            let { data: movie } = await axiosMovie.get(`/movie/${id}?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`);
+            let { data: movie } = await axiosMovie.get(`/movie/${id}?api_key=${process.env.REACT_APP_API_KEY}&append_to_response=similar,credits`);
             const movie_img = `https://image.tmdb.org/t/p/w780/${movie.poster_path}`;
 
             // Get Similar Movies and their Posters
-            let { data: sim_movies } = await axiosMovie.get(`/movie/${id}/similar?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`);
-            sim_movies = sim_movies.results;
-
-            sim_movies = sim_movies.map(movie => {
+            let sim_movies = movie.similar.results.map(movie => {
                 let movie_img = `https://image.tmdb.org/t/p/w500/${movie.poster_path}`;
                 let releaseYear = movie.release_date.split('-')[0];
-                return { ...movie, img: movie_img, releaseYear };
+                let movie_id = uniqid();
+                return { ...movie, img: movie_img, releaseYear, movie_id };
             });
-
-            movie = { ...movie, img: movie_img, sim_movies };
+            
+            // Get Cast and their Details, including Profile Pics
+            const cast = movie.credits.cast.map(p => {
+                const p_img = `https://image.tmdb.org/t/p/w500/${p.profile_path}`;
+                return { ...p, img: p_img};
+            });
+            
+            // Get Crew and their Details, including Profile Pics
+            const crew = movie.credits.crew.map(p => {
+                const p_img = `https://image.tmdb.org/t/p/w500/${p.profile_path}`;
+                return { ...p, img: p_img};
+            });
+            
+            delete movie.credits;
+            movie = { ...movie, img: movie_img, similar: sim_movies, cast, crew};
+            console.log(movie);
 
             setTimeout(() => {
                 dispatch(getMovieSuccess(movie));

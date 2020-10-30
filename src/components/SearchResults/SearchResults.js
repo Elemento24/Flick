@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react';
+import React, { useState, Fragment } from 'react';
 import { connect } from 'react-redux';
 
 import * as actions from '../../store/actions/action';
@@ -19,7 +19,7 @@ const SearchResults = (props) => {
         clearTimeout(timer);
         let currentTimer = setTimeout(() => {
             props.onSearch(value);
-        }, 1500);
+        }, 1000);
         setTimer(currentTimer);
     };
     
@@ -35,7 +35,7 @@ const SearchResults = (props) => {
     if(props.movies){
         props.movies.forEach((movie,ind) => {
             items.push(
-                <Card movie={movie} key={movie.id}/>
+                <Card movie={movie} key={movie.movie_id}/>
             );
         });
     }
@@ -46,7 +46,9 @@ const SearchResults = (props) => {
                 <div className='search__btn'>
                     <TopButton />
                 </div>
-                {items}
+                <div className='search__movies my-10'>
+                    {items}
+                </div>
             </Fragment>
         );
     }

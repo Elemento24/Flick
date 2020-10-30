@@ -4,6 +4,8 @@ import { animateScroll as scroll } from 'react-scroll';
 
 import * as actions from '../../store/actions/action';
 import Card from '../UI/Card';
+import CastCard from '../UI/CastCard';
+import CrewCard from '../UI/CrewCard';
 import Loader from '../UI/Loader';
 import TopButton from '../UI/TopButton';
 import { ReactComponent as Clock } from '../../assets/clock.svg';
@@ -39,9 +41,31 @@ const ShowMovie = props => {
     
     if(movie && !props.loading){
         const {date, month, year} = convertDate(movie.release_date);
-        const similarMovies = movie.sim_movies.map(movie => {
+        
+        const i = 10;
+        // Map over the Array of Cast
+        const cast = [];
+        for(let j = 0; j < movie.cast.length; j++){
+            const actor = movie.cast[j];
+            if(j < i && actor.profile_path){
+                cast.push(<CastCard cast={actor} key={actor.credit_id} />);
+            }
+        }
+        
+        // Map over the Array of Crew
+        const crew = [];
+        const departments = ['Directing', 'Production', 'Writing'];
+        for(let j = 0; j < movie.crew.length; j++){
+            const person = movie.crew[j];
+            if(departments.includes(person.department)){
+                crew.push(<CrewCard crew={person} key={person.credit_id} />);
+            }
+        }
+        
+        // Map over the Array of Similar Movies
+        const similarMovies = movie.similar.map(movie => {
             return (
-                <Card movie={movie} key={movie.id} scrollFun={(duration) => scrollTop(100)}/>
+                <Card movie={movie} key={movie.movie_id} scrollFun={(duration) => scrollTop(100)}/>
             );
         });
         
@@ -84,17 +108,38 @@ const ShowMovie = props => {
                     </div>
                 </div>
                 
-                <div className='show__similar'>
-                
-                    <div className='show__simHeadBox my-7'>
-                        <h1 className='heading-pri show__simHead'>Similar Movies...</h1>
+                {movie.cast.length > 0 ? (
+                    <div className='show__cast'>
+                        <div className='show__castHeadBox my-7'>
+                            <h1 className='heading-pri show__castHead'>Top Billed Cast</h1>
+                        </div>
+                        <div className='show__castings'>
+                            {cast}
+                        </div>
                     </div>
-                    
-                    <div className='show__simMovies'>
-                        {similarMovies}
-                    </div>
+                ) : null}
                 
-                </div>
+                {movie.crew.length > 0 ? (
+                    <div className='show__crew'>
+                        <div className='show__crewHeadBox my-7'>
+                            <h1 className='heading-pri show__crewHead'>Credits</h1>
+                        </div>
+                        <div className='show__credits'>
+                            {crew}
+                        </div>
+                    </div>
+                ) : null}
+                
+                {movie.similar.length > 0 ? (
+                    <div className='show__similar'>
+                        <div className='show__simHeadBox my-7'>
+                            <h1 className='heading-pri show__simHead'>Similar Movies</h1>
+                        </div>
+                        <div className='show__simMovies'>
+                            {similarMovies}
+                        </div>
+                    </div>
+                ) : null}
                 
             </Fragment>
         );
