@@ -1,5 +1,6 @@
-import React, { useState, Fragment } from 'react';
+import React, { useState, useEffect, Fragment } from 'react';
 import { connect } from 'react-redux';
+import { animateScroll as scroll } from 'react-scroll';
 
 import * as actions from '../../store/actions/action';
 import TopButton from '../UI/TopButton';
@@ -9,6 +10,17 @@ import {ReactComponent as GlassIcon} from '../../assets/search.svg';
 import {ReactComponent as Popcorn} from '../../assets/popcorn.svg';
 
 const SearchResults = (props) => {
+    
+    const scrollTop = (duration) => {
+        scroll.scrollToTop({
+            smooth: true,
+            duration
+        });
+    };
+    
+    useEffect(() => {
+        scrollTop(0);
+    }, []);
     
     const [inputValue, setInputValue] = useState('');
     const [timer, setTimer] = useState(null);

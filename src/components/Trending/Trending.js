@@ -1,6 +1,7 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useEffect } from 'react';
 import { connect } from 'react-redux';
 import InfiniteScroll from 'react-infinite-scroller';
+import { animateScroll as scroll } from 'react-scroll';
 
 import * as actions from '../../store/actions/action';
 import TopButton from '../UI/TopButton';
@@ -11,6 +12,17 @@ import { ReactComponent as TrendingIcon } from '../../assets/rocket-launch.svg';
 
 const Trending = (props) => {
     let items = [];
+    
+    const scrollTop = (duration) => {
+        scroll.scrollToTop({
+            smooth: true,
+            duration
+        });
+    };
+    
+    useEffect(() => {
+        scrollTop(0);
+    }, []);
     
     let content = (
         <div className = 'trending__loader-container'>
