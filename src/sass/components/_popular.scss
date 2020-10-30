@@ -48,6 +48,13 @@
             top: -6rem;
         }
         
+        @include respond(phone) {
+            height: 90px;
+            width: 90px;
+            top: -7rem;
+            right: -1rem;
+        }
+        
         &--avg {
             @include absCenter;
             font-size: 2.5rem;

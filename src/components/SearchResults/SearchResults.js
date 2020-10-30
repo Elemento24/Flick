@@ -68,12 +68,16 @@ const SearchResults = (props) => {
     return (
         <div className='search'>
             <div className='search__heading-box'>
-                <h1 className='heading-pri search__heading'>Pick Up a Popcorn Partner</h1>
-                <Popcorn className='search__heading-icon' />
+                <h1 className='heading-pri search__heading'>
+                    Pick Up a Popcorn Partner 
+                    <span className='ml-2'>
+                        <Popcorn className='search__heading-icon' />
+                    </span>
+                </h1>
             </div>
             <div className = 'search__input-container' >
                 <GlassIcon className = 'search__input-icon' />
-                <input className='search__input' placeholder='Search from over a Million Movies' type='text' onChange = {(event) => inputChangedHandler(event)} value={inputValue} />
+                <input className='search__input' placeholder='Search from over a Billion Movies' type='text' onChange = {(event) => inputChangedHandler(event)} value={inputValue} />
             </div>
             {content}
         </div>    

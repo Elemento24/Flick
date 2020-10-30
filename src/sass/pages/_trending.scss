@@ -21,6 +21,11 @@
         fill: $cp;
         width: 5rem;
         height: 5rem;
+        
+        @include respond(phone){
+            width: 4rem;
+            height: 4rem;
+        }
     }
     
     &__btn{

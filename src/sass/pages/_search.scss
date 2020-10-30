@@ -5,10 +5,7 @@
     &__heading-box {
         margin-top: 15rem;
         margin-bottom: 6rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        height: max-content;
+        padding: 0 1.5rem;
     }
     
     &__heading{
@@ -16,12 +13,21 @@
         text-align: center;
         color: $cw;
         text-transform: uppercase;
+        
+        @include respond(phone){
+            margin-right: 0;
+        }
     }
     
     &__heading-icon{
         fill: $cp;
         width: 5rem;
         height: 5rem;
+        
+        @include respond(phone){
+            width: 4rem;
+            height: 4rem;
+        }
     }
     
     &__btn{
