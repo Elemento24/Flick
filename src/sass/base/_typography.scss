@@ -6,12 +6,24 @@
 
 .heading-pri {
     font-size: 6rem;
+    
+    @include respond(phone){
+        font-size: 5rem;
+    }
 }
 
 .heading-sec{
     font-size: 4rem;
+    
+    @include respond(phone){
+        font-size: 3rem;
+    }
 }
 
 .heading-ter{
     font-size: 3rem;
+    
+    @include respond(phone){
+        font-size: 2rem;
+    }
 }

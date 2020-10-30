@@ -220,7 +220,6 @@ export const getMovie = (id) => {
             
             delete movie.credits;
             movie = { ...movie, img: movie_img, similar: sim_movies, cast, crew};
-            console.log(movie);
 
             setTimeout(() => {
                 dispatch(getMovieSuccess(movie));

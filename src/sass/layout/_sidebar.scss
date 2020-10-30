@@ -26,6 +26,10 @@
             flex-direction: column;
             justify-content: space-evenly;
             height: 100%;
+            
+            @include respond(phone){
+                padding: 7.5rem 0;
+            }
         }
         
         &-item {

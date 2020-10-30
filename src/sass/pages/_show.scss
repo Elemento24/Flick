@@ -155,6 +155,12 @@
         row-gap: 5rem;
         align-items: center;
         justify-items: center;
+        
+        @include respond(phone){
+            padding: 0 3rem;
+            column-gap: 3rem;
+            row-gap: 3rem;
+        }
     }
     
     &__simHeadBox{

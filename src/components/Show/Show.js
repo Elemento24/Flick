@@ -53,14 +53,11 @@ const ShowMovie = props => {
         }
         
         // Map over the Array of Crew
-        const crew = [];
-        const departments = ['Directing', 'Production', 'Writing'];
-        for(let j = 0; j < movie.crew.length; j++){
-            const person = movie.crew[j];
-            if(departments.includes(person.department)){
-                crew.push(<CrewCard crew={person} key={person.credit_id} />);
-            }
-        }
+        const crews = movie.crew.filter((c) => {
+            if (c.department === 'Production' || c.department === 'Writing' || c.department === 'Production') return true;
+            return false;
+        });
+        const crew = crews.map(crew => <CrewCard crew={crew} key={crew.credit_id}/> );
         
         // Map over the Array of Similar Movies
         const similarMovies = movie.similar.map(movie => {
