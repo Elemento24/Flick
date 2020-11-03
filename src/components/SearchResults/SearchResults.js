@@ -2,7 +2,7 @@ import React, { useState, useEffect, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { animateScroll as scroll } from 'react-scroll';
 
-import * as actions from '../../store/actions/action';
+import * as actions from '../../store/actions';
 import TopButton from '../UI/TopButton';
 import Card from '../UI/Card';
 import Loader from '../UI/Loader';
@@ -86,8 +86,8 @@ const SearchResults = (props) => {
 
 const mapStateToProps = state => {
     return {
-        movies: state.searchResults,
-        loading: state.searchLoading
+        movies: state.search.searchResults,
+        loading: state.search.searchLoading
     };
 };
 

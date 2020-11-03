@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { connect} from 'react-redux';
 
-import * as actions from '../../../store/actions/action';
+import * as actions from '../../../store/actions';
 
 const Latest = props => {
     const {onGetPopular, genres, movie} = props;
@@ -54,10 +54,10 @@ const Latest = props => {
 
 const mapStateToProps = state => {
     return {
-        movie: state.popularMovie,
-        genres: state.genres,
-        loading: state.popularLoading,
-        error: state.popularError
+        movie: state.popular.popularMovie,
+        genres: state.genre.genres,
+        loading: state.popular.popularLoading,
+        error: state.popular.popularError
     };
 };
 

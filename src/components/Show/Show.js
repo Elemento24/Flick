@@ -2,7 +2,7 @@ import React, {Fragment, useEffect} from 'react';
 import {connect} from 'react-redux';
 import { animateScroll as scroll } from 'react-scroll';
 
-import * as actions from '../../store/actions/action';
+import * as actions from '../../store/actions';
 import Card from '../UI/Card';
 import CastCard from '../UI/CastCard';
 import CrewCard from '../UI/CrewCard';
@@ -157,8 +157,8 @@ const ShowMovie = props => {
 
 const mapStateToProps = state => {
     return {
-        movie: state.movie,
-        loading: state.movieLoading
+        movie: state.show.movie,
+        loading: state.show.movieLoading
     };
 };
 

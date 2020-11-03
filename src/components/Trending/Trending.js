@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import InfiniteScroll from 'react-infinite-scroller';
 import { animateScroll as scroll } from 'react-scroll';
 
-import * as actions from '../../store/actions/action';
+import * as actions from '../../store/actions';
 import TopButton from '../UI/TopButton';
 import Card from '../UI/Card';
 import Loader from '../UI/Loader';
@@ -71,10 +71,10 @@ const Trending = (props) => {
 
 const mapStateToProps = state => {
     return {
-        page: state.trendingPage,
-        hasMore: state.trendingHasMore,
-        movies: state.trending,
-        loading: state.trendingLoading
+        page: state.trending.trendingPage,
+        hasMore: state.trending.trendingHasMore,
+        movies: state.trending.trending,
+        loading: state.trending.trendingLoading
     };
 };
 

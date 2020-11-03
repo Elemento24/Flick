@@ -4,12 +4,12 @@ import {Link} from 'react-router-dom';
 import Logo from '../../assets/logo.png';
 
 const Navbar = (props) => {
-    const classes = props.isSideOpen ? 'nav__ham-icon nav__ham-icon--on' : 'nav__ham-icon nav__ham-icon--off';  
+    const classes = props.isSideOpen ? 'nav__ham-icon nav__ham-icon--on' : 'nav__ham-icon nav__ham-icon--off';
     
     return(
         <div className='nav'>
             <figure className='nav__logo-box'>
-                <Link to = "/">
+                <Link to='/' replace >
                     <img className='nav__logo' src={Logo} alt="Logo" />
                 </Link>
             </figure>

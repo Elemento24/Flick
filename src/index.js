@@ -2,19 +2,32 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import { createStore, applyMiddleware, compose } from 'redux';
+import { createStore, applyMiddleware, compose, combineReducers } from 'redux';
 import thunk from 'redux-thunk';
 
 import './index.scss';
 import App from './App';
-import reducer from './store/reducers/reducer';
 import * as serviceWorker from './serviceWorker';
 
+// REDUCERS
+import genreReducer from './store/reducers/genre';
+import showReducer from './store/reducers/show';
+import popularReducer from './store/reducers/popular';
+import trendingReducer from './store/reducers/trending';
+import searchReducer from './store/reducers/search';
 
 const composeEnhancers = process.env.NODE_ENV === 'development' ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ : null || compose;
 
+const rootReducer = combineReducers({
+    genre: genreReducer,
+    show: showReducer,
+    popular: popularReducer,
+    trending: trendingReducer,
+    search: searchReducer
+});
+
 const store = createStore(
-    reducer,
+    rootReducer,
     composeEnhancers(applyMiddleware(thunk))
 );
 

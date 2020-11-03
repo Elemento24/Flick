@@ -3,6 +3,11 @@
     width: 100%;
     color: $cw;
     font-size: 2rem;
+    padding-bottom: 6rem;
+    
+    @include respond(phone) {
+        padding-bottom: 4rem;
+    }
     
     &__heading{
         color: $cp;
