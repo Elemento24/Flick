@@ -12,3 +12,6 @@ export { getMovie } from './show';
 
 // TRENDING PAGE
 export { getTrending } from './trending';
+
+// WISHLIST PAGE
+// export { getWishlist } from './wishlist';

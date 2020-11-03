@@ -17,6 +17,10 @@ const asyncShow = asyncComponent(() => {
     return import('./components/Show/Show');
 });
 
+const asyncWishlist = asyncComponent(() => {
+    return import('./components/Wishlist/Wishlist');
+});
+
 const App = () => {
     
     let routes = (
@@ -24,6 +28,7 @@ const App = () => {
             <Route path='/trending' exact component={asyncTrending} />
 			<Route path='/search' exact component={asyncSearch} />
  			<Route path='/movie/:id' exact component={asyncShow} />
+ 			<Route path='/wishlist' exact component={asyncWishlist} />
 			<Route path='/' exact component = { Landing }/>
 			<Redirect to='/' />
 		</Switch>

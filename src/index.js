@@ -15,6 +15,7 @@ import showReducer from './store/reducers/show';
 import popularReducer from './store/reducers/popular';
 import trendingReducer from './store/reducers/trending';
 import searchReducer from './store/reducers/search';
+import wishlistReducer from './store/reducers/wishlist';
 
 const composeEnhancers = process.env.NODE_ENV === 'development' ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ : null || compose;
 
@@ -23,7 +24,8 @@ const rootReducer = combineReducers({
     show: showReducer,
     popular: popularReducer,
     trending: trendingReducer,
-    search: searchReducer
+    search: searchReducer,
+    wishlist: wishlistReducer
 });
 
 const store = createStore(

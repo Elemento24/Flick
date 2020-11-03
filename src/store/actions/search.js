@@ -19,7 +19,7 @@ export const getSearchResults = (query) => {
                     let movie_img = `https://image.tmdb.org/t/p/w500/${movie.poster_path}`;
                     let releaseYear = movie.release_date.split('-')[0];
                     let movie_id = uniqid();
-                    return { ...movie, img: movie_img, releaseYear, movie_id };
+                    return { ...movie, img: movie_img, releaseYear, movie_id, isFavorite: false };
                 });
                 
                 dispatch(getSearchResultsSuccess(newResults));

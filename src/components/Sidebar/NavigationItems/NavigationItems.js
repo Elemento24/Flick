@@ -7,6 +7,7 @@ const NavigationItems = props => (
     <NavigationItem link='/'>Home</NavigationItem>
     <NavigationItem link='/search'>Search</NavigationItem>
     <NavigationItem link='/trending'>Trending</NavigationItem>
+    <NavigationItem link='/wishlist'>Wishlist</NavigationItem>
   </ul>
 );
 
