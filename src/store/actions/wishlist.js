@@ -1,14 +1,14 @@
 import * as actionTypes from './actionTypes';
-import axiosMovie from '../../axios-url';
 import ls from 'local-storage';
 
 export const getWishlist = () => {
-    return async dispatch => {
+    return dispatch => {
         dispatch(getWishlistStart());
         try {
             const movies = ls.get('movies');
             const IDs = ls.get('ids');
-            console.log(movies, IDs);
+            
+            dispatch(getWishlistSuccess(movies, IDs));
         }
         catch (error) {
             dispatch(getWishlistFail(error));

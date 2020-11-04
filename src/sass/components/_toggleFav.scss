@@ -1,0 +1,14 @@
+.toggleFav{
+    
+    &__icon{
+        height: 100%;
+        width: 100%;
+        fill: $cw;
+        transition: .2s all linear;
+        cursor: pointer;
+        
+        &--active{
+            fill: $cp;  
+        }
+    }
+}

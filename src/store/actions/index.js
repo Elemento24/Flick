@@ -14,4 +14,4 @@ export { getMovie } from './show';
 export { getTrending } from './trending';
 
 // WISHLIST PAGE
-// export { getWishlist } from './wishlist';
+export { getWishlist, removeFavorite, addFavorite } from './wishlist';

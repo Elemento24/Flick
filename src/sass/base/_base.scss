@@ -49,6 +49,16 @@ body {
     font-family: $fs;
 }
 
+::-moz-selection { /* Code for Firefox */
+  color: $cw;
+  background: $cp-l;
+}
+
+::selection {
+  color: $cw;
+  background: $cp-l;
+}
+
 ul {
     list-style: none;
 }

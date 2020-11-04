@@ -8,7 +8,7 @@ import Footer from '../components/Footer/Footer';
 
 const Layout = props => {
     
-    const {onGetGenres} = props;
+    const {onGetGenres, onGetWishlist} = props;
     const [ isSideOpen, setToggleSidebar ] = useState(false);
     
     const toggleSidebar = () => {
@@ -17,7 +17,8 @@ const Layout = props => {
     
     useEffect(() => {
         onGetGenres();
-    }, [onGetGenres]);
+        onGetWishlist();
+    }, [onGetGenres, onGetWishlist]);
     
 	return(
 		<div className='layout'>
@@ -36,9 +37,11 @@ const Layout = props => {
 	);
 };
 
+
 const mapDispatchToProps = dispatch => {
     return {
-        onGetGenres: () => dispatch(actions.getGenres())
+        onGetGenres: () => dispatch(actions.getGenres()),
+        onGetWishlist: () => dispatch(actions.getWishlist())
     };
 };
 

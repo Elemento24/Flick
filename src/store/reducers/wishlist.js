@@ -31,8 +31,16 @@ const getWishlistFail = (state, action) => {
 };
 
 const addFavorite = (state,action) => {
-    const newWishlist = [...state.wishlist, action.movie];
-    const newWishlistID = [...state.wishlistID, action.ID];
+    let newWishlist = null;
+    let newWishlistID = null;
+    
+    if(state.wishlist){
+        newWishlist = [...state.wishlist, action.movie];
+        newWishlistID = [...state.wishlistID, action.movie.id];
+    } else {
+        newWishlist = [action.movie];
+        newWishlistID = [action.movie.id];
+    }
     
     // Updated the Local Storage
     ls.set('movies', newWishlist);
@@ -45,8 +53,8 @@ const addFavorite = (state,action) => {
 };
 
 const removeFavorite = (state, action) => {
-    const newWishlist = state.wishlist.filter(movie => movie.id !== action.ID);
-    const newWishlistID = state.wishlistID.filter(ID => ID !== action.ID);
+    const newWishlist = state.wishlist.filter(movie => movie.id !== action.id);
+    const newWishlistID = state.wishlistID.filter(ID => ID !== action.id);
     
     // Updated the Local Storage
     ls.set('movies', newWishlist);
