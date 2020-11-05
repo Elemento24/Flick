@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 
 import * as actions from '../../store/actions';
@@ -15,17 +15,6 @@ const ToggleFav = props => {
     else{
         title = 'Add to Wishlist';
     }
-
-    // useEffect(() => {
-    //     if (IDS && IDS.includes(favMovie.id)) {
-    //         title = 'Remove From Wishlist';
-    //         document.querySelector('.toggleFav__icon').classList.add('toggleFav__icon--active');
-    //     }
-    //     else {
-    //         title = 'Add to Wishlist';
-    //         document.querySelector('.toggleFav__icon').classList.remove('toggleFav__icon--active');
-    //     }
-    // }, []);
 
     const favoriteClickHandler = (e, movie) => {
         if (IDS && props.IDS.includes(movie.id)) {

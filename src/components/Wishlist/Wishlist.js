@@ -1,6 +1,5 @@
 import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
-import { animateScroll as scroll } from 'react-scroll';
 
 import Button from '../UI/Button';
 import TopButton from '../UI/TopButton';
