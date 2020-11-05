@@ -1,4 +1,4 @@
-.trending{
+.wishlist{
     position: relative;
     min-height: 100vh;
     padding-bottom: 4rem;
@@ -13,6 +13,12 @@
     
     &__heading{
         margin-right: 2rem;
+    }
+    
+    &__emptyBox{
+        color: $cw;
+        text-align: center;
+        margin: 4rem 0;
     }
     
     &__btn{

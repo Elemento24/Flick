@@ -1,4 +1,6 @@
 .card{
+    position: relative;
+    
     &__movie{
         position: relative;
         width: 35rem;
@@ -9,6 +11,7 @@
     }
     
     &__imgDiv{
+        position: relative;
         height: 100%;
         width: 100%;
     }
@@ -83,6 +86,17 @@
             visibility: visible;
             opacity: 1;
         }
+    }
+    
+        
+    &__fav-icon {
+        height: 3rem;
+        width: 3rem;
+        fill: $cw;
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        z-index: 2;
     }
     
     &__title{

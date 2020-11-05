@@ -10,23 +10,9 @@
     
     &__heading{
         margin-right: 2rem;
-        text-align: center;
-        color: $cw;
-        text-transform: uppercase;
         
         @include respond(phone){
             margin-right: 0;
-        }
-    }
-    
-    &__heading-icon{
-        fill: $cp;
-        width: 5rem;
-        height: 5rem;
-        
-        @include respond(phone){
-            width: 4rem;
-            height: 4rem;
         }
     }
     
@@ -80,26 +66,5 @@
         top: 50%;
         left: 20px;
         transform: translateY(-50%);
-    }
-    
-    &__movies{
-        display: grid;
-        padding: 0 5rem;
-        grid-template-columns: repeat(auto-fit, minmax(35rem, 1fr));
-        column-gap: 4rem;
-        row-gap: 6rem;
-        justify-items: center;
-        
-        @include respond(tab-land) {
-            column-gap: 2rem;
-        }
-    }
-    
-    &__loader-container {
-        min-height: 50vh;
-    }
-    
-    &__loader {
-        @include absCenter;
     }
 }

@@ -41,9 +41,10 @@ const ShowMovie = props => {
 
 	if (movie && !props.loading) {
 		const { date, month, year } = convertDate(movie.release_date);
+		
 		const favMovie = {
 			id: movie.id,
-			movie_id: movie.movie_id,
+			movie_id: movie.imdb_id,
 			title: movie.title,
 			vote_average: movie.vote_average,
 			img: movie.img,
@@ -111,7 +112,7 @@ const ShowMovie = props => {
 					<div className='show__img-box'>
 						<div className = 'show__img-div'>
 							<img className = 'show__img' src={movie.img} alt={movie.title} />
-							<ToggleFav class = 'show__fav-icon'  favMovie={movie} />
+							<ToggleFav class = 'show__fav-icon'  favMovie={favMovie} />
 						</div>
 					</div>
 				</div>

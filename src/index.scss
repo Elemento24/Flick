@@ -6,10 +6,12 @@
 @import './sass/base/_typography.scss';
 @import './sass/base/_utilities.scss';
 
+@import './sass/pages/_common.scss';
 @import './sass/pages/_landing.scss';
 @import './sass/pages/_search.scss';
 @import './sass/pages/_show.scss';
 @import './sass/pages/_trending.scss';
+@import './sass/pages/_wishlist.scss';
 
 @import './sass/components/_button.scss';
 @import './sass/components/_card.scss';

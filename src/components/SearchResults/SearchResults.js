@@ -37,8 +37,8 @@ const SearchResults = (props) => {
     
     let items = [];
     let content = (
-        <div className = 'search__loader-container'>
-            <div className = 'search__loader'>
+        <div className = 'common__loader-container'>
+            <div className = 'common__loader'>
                 <Loader/>
             </div>
         </div>
@@ -58,7 +58,7 @@ const SearchResults = (props) => {
                 <div className='search__btn'>
                     <TopButton />
                 </div>
-                <div className='search__movies my-10'>
+                <div className='common__movies my-10'>
                     {items}
                 </div>
             </Fragment>
@@ -71,7 +71,7 @@ const SearchResults = (props) => {
                 <h1 className='heading-pri search__heading'>
                     Pick Up a Popcorn Partner 
                     <span className='ml-2'>
-                        <Popcorn className='search__heading-icon' />
+                        <Popcorn className='common__heading-icon' />
                     </span>
                 </h1>
             </div>

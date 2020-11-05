@@ -25,8 +25,8 @@ const Trending = (props) => {
     }, []);
     
     let content = (
-        <div className = 'trending__loader-container'>
-            <div className = 'trending__loader'>
+        <div className = 'common__loader-container'>
+            <div className = 'common__loader'>
                 <Loader/>
             </div>
         </div>
@@ -45,7 +45,7 @@ const Trending = (props) => {
             <Fragment>
                 <div className = "trending__heading-box">
                     <h1 className="heading-pri trending__heading">What's Trending</h1>
-                    <TrendingIcon className = "trending__heading-icon" />
+                    <TrendingIcon className = "common__heading-icon" />
                 </div>
                 <div className='trending__btn'>
                     <TopButton />
@@ -54,12 +54,12 @@ const Trending = (props) => {
                     loadMore={(page) => props.onGetTrending(props.page)}
                     hasMore={props.hasMore}
                     threshold={20}
-                    className='trending__movies'
+                    className='common__movies'
                 >
                     {items}
                 </InfiniteScroll>
             </Fragment>
-        )
+        );
     }
     
     return (

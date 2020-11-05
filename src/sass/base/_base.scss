@@ -49,14 +49,14 @@ body {
     font-family: $fs;
 }
 
-::-moz-selection { /* Code for Firefox */
+::-moz-selection {
   color: $cw;
-  background: $cp-l;
+  background: $cb;
 }
 
 ::selection {
   color: $cw;
-  background: $cp-l;
+  background: $cb;
 }
 
 ul {

@@ -6,6 +6,9 @@
 
 .heading-pri {
     font-size: 6rem;
+    text-align: center;
+    color: $cw;
+    text-transform: uppercase;
     
     @include respond(phone){
         font-size: 5rem;

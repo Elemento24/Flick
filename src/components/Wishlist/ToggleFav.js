@@ -6,37 +6,47 @@ import { ReactComponent as Heart } from '../../assets/heart.svg';
 
 const ToggleFav = props => {
 
-    const {IDS, favMovie} = props;
+    const { IDS, favMovie } = props;
     let title;
-    
-    if (IDS && IDS.includes(favMovie.id))
+
+    if (IDS && IDS.includes(favMovie.id)){
         title = 'Remove From Wishlist';
-    else 
+    }
+    else{
         title = 'Add to Wishlist';
+    }
 
-    useEffect(() => {
-        if (IDS && IDS.includes(favMovie.id)) {
-            title = 'Remove From Wishlist';
-            document.querySelector('.toggleFav__icon').classList.add('toggleFav__icon--active');
-        }
-        else {
-            title = 'Add to Wishlist';
-            document.querySelector('.toggleFav__icon').classList.remove('toggleFav__icon--active');
-        }
-    }, [title, IDS, favMovie]);
+    // useEffect(() => {
+    //     if (IDS && IDS.includes(favMovie.id)) {
+    //         title = 'Remove From Wishlist';
+    //         document.querySelector('.toggleFav__icon').classList.add('toggleFav__icon--active');
+    //     }
+    //     else {
+    //         title = 'Add to Wishlist';
+    //         document.querySelector('.toggleFav__icon').classList.remove('toggleFav__icon--active');
+    //     }
+    // }, []);
 
-    const favoriteClickHandler = (movie) => {
+    const favoriteClickHandler = (e, movie) => {
         if (IDS && props.IDS.includes(movie.id)) {
             props.removeFav(movie.id);
         }
         else {
             props.addFav(movie);
         }
+        e.stopPropagation();
     };
 
     return (
-        <div className={`toggleFav ${props.class}`} title = {title}>
-            <Heart className='toggleFav__icon' onClick={(movie) => favoriteClickHandler(favMovie)} />
+        <div data-aos='fade-up'
+            data-aos-duration="500"
+            className={`toggleFav ${props.class}`}
+            title = {title}
+        >
+            <Heart 
+                className={`toggleFav__icon ${IDS && IDS.includes(favMovie.id) ? 'toggleFav__icon--active' : '' }`} 
+                onClick={(e) => favoriteClickHandler(e, favMovie)} 
+            />
         </div>
     );
 };
